@@ -195,7 +195,7 @@
             transition: all 0.3s ease;
         }
         
-        /* Profile Card */
+        /* Profile Card - ENLARGED */
         .profile-card {
             background: var(--card-bg);
             border-radius: 20px;
@@ -212,7 +212,7 @@
         }
         
         .profile-header {
-            padding: 30px 20px;
+            padding: 40px 20px; /* Increased padding */
             text-align: center;
             position: relative;
             background: var(--header-bg);
@@ -220,13 +220,13 @@
         
         .profile-badge {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 25px; /* Adjusted position */
+            right: 25px; /* Adjusted position */
             background: var(--accent-gold);
             color: var(--primary-black);
-            padding: 6px 15px;
+            padding: 8px 18px; /* Slightly larger */
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 13px; /* Slightly larger */
             font-weight: 600;
             box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
         }
@@ -234,52 +234,70 @@
         .profile-img-container {
             position: relative;
             display: inline-block;
-            margin-bottom: 20px;
+            margin-bottom: 25px; /* Increased margin */
         }
         
         .profile-img {
-            width: 120px;
-            height: 120px;
+            width: 150px; /* ENLARGED from 120px */
+            height: 150px; /* ENLARGED from 120px */
             object-fit: cover;
             border-radius: 50%;
-            border: 3px solid var(--accent-gold);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border: 4px solid var(--accent-gold); /* Thicker border */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); /* Stronger shadow */
         }
         
         .profile-verify {
             position: absolute;
-            bottom: 10px;
-            right: 10px;
+            bottom: 15px; /* Adjusted position */
+            right: 15px; /* Adjusted position */
             background: var(--accent-gold);
             color: var(--primary-black);
-            width: 24px;
-            height: 24px;
+            width: 28px; /* Slightly larger */
+            height: 28px; /* Slightly larger */
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            font-size: 13px; /* Slightly larger */
         }
         
         .profile-name {
-            font-size: 26px;
-            margin-bottom: 5px;
+            font-size: 32px; /* ENLARGED from 26px */
+            margin-bottom: 8px; /* Increased margin */
             background: linear-gradient(90deg, var(--accent-gold), var(--light-gold));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            font-weight: 700; /* Bolder */
         }
         
         .profile-title {
             color: var(--text-gray);
-            font-size: 16px;
-            margin-bottom: 10px;
+            font-size: 18px; /* ENLARGED from 16px */
+            margin-bottom: 12px; /* Increased margin */
+            font-weight: 500;
         }
         
         .profile-company {
             color: var(--text-light);
-            font-size: 18px;
-            font-weight: 500;
+            font-size: 22px; /* ENLARGED from 18px */
+            font-weight: 600; /* Bolder */
+            letter-spacing: 0.5px;
+        }
+        
+        /* Enhanced profile section with more prominence */
+        .profile-intro {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .profile-intro p {
+            font-size: 15px;
+            color: var(--text-gray);
+            margin-bottom: 0;
         }
         
         /* Tap Action Buttons Grid */
@@ -691,7 +709,12 @@
             }
             
             .profile-name {
-                font-size: 22px;
+                font-size: 26px; /* Adjusted for mobile */
+            }
+            
+            .profile-img {
+                width: 130px; /* Adjusted for mobile */
+                height: 130px; /* Adjusted for mobile */
             }
             
             .admin-btn {
@@ -708,6 +731,14 @@
                 width: 40px;
                 height: 40px;
                 font-size: 16px;
+            }
+            
+            .profile-title {
+                font-size: 16px;
+            }
+            
+            .profile-company {
+                font-size: 18px;
             }
         }
         
@@ -766,7 +797,8 @@
                         <div class="profile-header">
                             <div class="profile-badge" id="positionBadge">SALES EXECUTIVE</div>
                             <div class="profile-img-container">
-                                <img id="profileImage" src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="profile-img" alt="Profile">
+                                <!-- CHANGED: Local image from img folder -->
+                                <img id="profileImage" src="img/dp.jpeg" class="profile-img" alt="Profile" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'">
                                 <div class="profile-verify">
                                     <i class="fas fa-check"></i>
                                 </div>
@@ -774,6 +806,11 @@
                             <h2 id="fullName" class="profile-name">Cus Marqueses</h2>
                             <div id="positionTitle" class="profile-title">Sales Executive</div>
                             <div id="companyName" class="profile-company">Woodteqph Prime Corporation</div>
+                            
+                            <!-- Added profile intro section -->
+                            <div class="profile-intro">
+                                <p>Specializing in premium construction solutions, custom cabinetry, and luxury interior design. Dedicated to delivering excellence in every project.</p>
+                            </div>
                         </div>
                         
                         <!-- Tap Action Grid -->
@@ -987,8 +1024,9 @@
     <script>
         // Default configuration
         const defaultConfig = {
-            videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // YouTube embed URL
-            videoType: "youtube", // "youtube" or "facebook"
+            profileImage: "img/dp.jpeg", // CHANGED: Local image path
+            videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+            videoType: "youtube",
             projects: [
                 "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
                 "https://images.unsplash.com/photo-1600585154340-963ed7476c5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
@@ -1021,10 +1059,16 @@
             const storedData = localStorage.getItem('woodteqphProfile');
             const config = storedData ? JSON.parse(storedData) : defaultConfig;
 
-            // Update profile info
-            if (config.profileImage) {
-                document.getElementById('profileImage').src = config.profileImage;
-            }
+            // Update profile info with fallback
+            const profileImage = document.getElementById('profileImage');
+            profileImage.src = config.profileImage || "img/dp.jpeg";
+            
+            // Add error handling for local image
+            profileImage.onerror = function() {
+                console.log("Local image not found, using fallback");
+                this.src = "https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80";
+            };
+            
             if (config.fullName) {
                 document.getElementById('fullName').textContent = config.fullName;
             }
@@ -1116,7 +1160,7 @@
                 const projectItem = document.createElement('div');
                 projectItem.className = 'project-item';
                 projectItem.innerHTML = `
-                    <img src="${image}" alt="Project ${index + 1}" class="project-image">
+                    <img src="${image}" alt="Project ${index + 1}" class="project-image" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
                     <div class="project-overlay">
                         Project ${index + 1}
                     </div>
@@ -1191,12 +1235,12 @@
             const config = localStorage.getItem('woodteqphProfile') ? 
                 JSON.parse(localStorage.getItem('woodteqphProfile')) : {};
             
-            const name = config.fullName || 'John Michael Rodriguez';
+            const name = config.fullName || 'Cus Marqueses';
             const company = config.companyName || 'Woodteqph Prime Corporation';
-            const title = config.position || 'Senior Sales Executive';
+            const title = config.position || 'Sales Executive';
             const phone = config.contactNumber || '+639171234567';
             const email = config.emailAddress || 'sales@woodteqphprime.com';
-            const address = config.companyAddress || '123 Construction Avenue, Makati CBD';
+            const address = config.companyAddress || '343 West Service Road, Poblete Compound, Sun Valley, Parañaque City';
 
             return `BEGIN:VCARD
 VERSION:3.0
@@ -1206,6 +1250,7 @@ TITLE:${title}
 TEL;TYPE=WORK,VOICE:${phone}
 EMAIL;TYPE=PREF,INTERNET:${email}
 ADR;TYPE=WORK:;;${address}
+PHOTO;VALUE=URI:${config.profileImage || "img/dp.jpeg"}
 NOTE:Digital Business Card - Tap & Save
 END:VCARD`;
         }
@@ -1275,4 +1320,3 @@ END:VCARD`;
     </script>
 </body>
 </html>
-
