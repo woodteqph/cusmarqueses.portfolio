@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Woodteqph Prime Admin</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --corporate-blue: #1a365d;
+            --accent-gold: #d4af37;
+            --light-gold: #f4e4aa;
+            --dark-blue: #0f2642;
+            --light-blue: #2d4a7c;
+            --pure-white: #ffffff;
+            --light-gray: #f5f7fa;
+            --medium-gray: #e1e8f0;
+            --dark-gray: #4a5568;
+            --text-dark: #2d3748;
+            --success-green: #38a169;
+            --error-red: #e53e3e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light-gray);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--corporate-blue) 0%, var(--dark-blue) 100%);
+        }
+        
+        .login-container {
+            max-width: 420px;
+            width: 100%;
+        }
+        
+        .login-card {
+            background-color: var(--pure-white);
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .login-header {
+            background-color: var(--corporate-blue);
+            color: var(--pure-white);
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .login-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .login-logo span {
+            color: var(--accent-gold);
+        }
+        
+        .login-subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .login-body {
+            padding: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: var(--corporate-blue);
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .input-group {
+            position: relative;
+        }
+        
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--dark-gray);
+            z-index: 10;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 14px 14px 14px 45px;
+            border: 2px solid var(--medium-gray);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: var(--pure-white);
+        }
+        
+        .form-control:focus {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+            outline: none;
+        }
+        
+        .btn-login {
+            background-color: var(--accent-gold);
+            color: var(--corporate-blue);
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .btn-login:hover {
+            background-color: var(--light-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn-login:disabled {
+            background-color: var(--medium-gray);
+            color: var(--dark-gray);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .login-footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid var(--medium-gray);
+            background-color: var(--light-gray);
+        }
+        
+        .back-link {
+            color: var(--corporate-blue);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+        
+        .error-message {
+            background-color: rgba(229, 62, 62, 0.1);
+            color: var(--error-red);
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+        
+        .success-message {
+            background-color: rgba(56, 161, 105, 0.1);
+            color: var(--success-green);
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--dark-gray);
+            cursor: pointer;
+            z-index: 10;
+        }
+        
+        .login-note {
+            font-size: 12px;
+            color: var(--dark-gray);
+            margin-top: 10px;
+            text-align: center;
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 480px) {
+            .login-body {
+                padding: 30px 20px;
+            }
+            
+            .login-header {
+                padding: 25px 20px;
+            }
+        }
+        
+        .loader {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid var(--light-gray);
+            border-top: 3px solid var(--accent-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="login-logo">WOODTEQPH<span>PRIME</span></div>
+                <div class="login-subtitle">Admin Login Portal</div>
+            </div>
+            
+            <div class="login-body">
+                <div id="errorMessage" class="error-message">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="errorText">Invalid username or password</span>
+                </div>
+                
+                <div id="successMessage" class="success-message">
+                    <i class="fas fa-check-circle"></i>
+                    <span id="successText">Login successful! Redirecting...</span>
+                </div>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username" class="form-label">Username</label>
+                        <div class="input-group">
+                            <i class="fas fa-user input-icon"></i>
+                            <input type="text" id="username" class="form-control" placeholder="Enter username" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <div class="input-group">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="password" class="form-control" placeholder="Enter password" required>
+                            <button type="button" class="password-toggle" id="togglePassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-login" id="loginButton">
+                        <span id="buttonText">Login to Dashboard</span>
+                        <div class="loader" id="loginLoader"></div>
+                    </button>
+                    
+                    <div class="login-note">
+                        <i class="fas fa-info-circle"></i>
+                        Default credentials: admin / password123
+                    </div>
+                </form>
+            </div>
+            
+            <div class="login-footer">
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Business Profile
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Default admin credentials (in production, this would be server-side)
+        const DEFAULT_USERNAME = 'admin';
+        const DEFAULT_PASSWORD = 'password123';
+        
+        // Check if user is already logged in
+        function checkExistingLogin() {
+            const isLoggedIn = localStorage.getItem('woodteqphAdminLoggedIn');
+            const loginExpiry = localStorage.getItem('woodteqphLoginExpiry');
+            
+            if (isLoggedIn === 'true' && loginExpiry) {
+                const now = new Date().getTime();
+                if (now < parseInt(loginExpiry)) {
+                    // Still logged in, redirect to edit page
+                    window.location.href = 'edit.html';
+                } else {
+                    // Login expired
+                    localStorage.removeItem('woodteqphAdminLoggedIn');
+                    localStorage.removeItem('woodteqphLoginExpiry');
+                }
+            }
+        }
+        
+        // Toggle password visibility
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const icon = this.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+        
+        // Handle form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const loginButton = document.getElementById('loginButton');
+            const buttonText = document.getElementById('buttonText');
+            const loginLoader = document.getElementById('loginLoader');
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Hide any previous messages
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+            
+            // Show loading state
+            loginButton.disabled = true;
+            buttonText.style.display = 'none';
+            loginLoader.style.display = 'block';
+            
+            // Simulate API call delay
+            setTimeout(() => {
+                // Check credentials
+                if (username === DEFAULT_USERNAME && password === DEFAULT_PASSWORD) {
+                    // Successful login
+                    const now = new Date().getTime();
+                    const expiryTime = now + (8 * 60 * 60 * 1000); // 8 hours from now
+                    
+                    // Store login state
+                    localStorage.setItem('woodteqphAdminLoggedIn', 'true');
+                    localStorage.setItem('woodteqphLoginExpiry', expiryTime.toString());
+                    localStorage.setItem('woodteqphAdminUsername', username);
+                    
+                    // Show success message
+                    successMessage.style.display = 'flex';
+                    
+                    // Redirect after delay
+                    setTimeout(() => {
+                        window.location.href = 'edit.html';
+                    }, 1500);
+                } else {
+                    // Failed login
+                    errorMessage.style.display = 'flex';
+                    document.getElementById('errorText').textContent = 'Invalid username or password. Please try again.';
+                    
+                    // Reset form
+                    loginButton.disabled = false;
+                    buttonText.style.display = 'inline';
+                    loginLoader.style.display = 'none';
+                    
+                    // Clear password field
+                    document.getElementById('password').value = '';
+                    
+                    // Shake animation for error
+                    errorMessage.style.animation = 'none';
+                    setTimeout(() => {
+                        errorMessage.style.animation = 'shake 0.5s';
+                    }, 10);
+                }
+            }, 1000); // Simulate network delay
+        });
+        
+        // Add shake animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% {transform: translateX(0);}
+                10%, 30%, 50%, 70%, 90% {transform: translateX(-5px);}
+                20%, 40%, 60%, 80% {transform: translateX(5px);}
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Check existing login on page load
+        document.addEventListener('DOMContentLoaded', checkExistingLogin);
+        
+        // Auto-focus username field
+        setTimeout(() => {
+            document.getElementById('username').focus();
+        }, 500);
+        
+        // Allow Enter key to submit form
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !document.getElementById('loginButton').disabled) {
+                document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+            }
+        });
+    </script>
+</body>
+</html>

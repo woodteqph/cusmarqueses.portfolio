@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Woodteqph Prime Corporation | Digital Business Card</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --corporate-blue: #1a365d;
+            --accent-gold: #d4af37;
+            --light-gold: #f4e4aa;
+            --dark-blue: #0f2642;
+            --pure-white: #ffffff;
+            --light-gray: #f5f7fa;
+            --medium-gray: #e1e8f0;
+            --dark-gray: #4a5568;
+            --text-dark: #2d3748;
+            --success-green: #38a169;
+            --black: #000000;
+            --dark-black: #121212;
+            --light-black: #1a1a1a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--pure-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        
+        /* Black Header */
+        .black-header {
+            background-color: var(--black);
+            padding: 20px 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--pure-white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo span {
+            color: var(--accent-gold);
+        }
+        
+        .logo-icon {
+            color: var(--accent-gold);
+            font-size: 24px;
+        }
+        
+        /* QR Indicator */
+        .qr-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--pure-white);
+            font-size: 14px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 30px 0;
+            background: linear-gradient(to bottom, var(--light-gray) 0%, var(--pure-white) 100%);
+            min-height: calc(100vh - 140px);
+        }
+        
+        /* Profile Card */
+        .profile-card {
+            background-color: var(--pure-white);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+            border: 1px solid var(--medium-gray);
+        }
+        
+        .profile-header {
+            background-color: var(--black);
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .profile-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent-gold);
+            color: var(--black);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--accent-gold);
+            margin-bottom: 15px;
+        }
+        
+        .profile-name {
+            color: var(--pure-white);
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .profile-title {
+            color: var(--accent-gold);
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .profile-company {
+            color: var(--pure-white);
+            opacity: 0.9;
+            font-size: 18px;
+        }
+        
+        .profile-body {
+            padding: 30px;
+        }
+        
+        /* Tap Action Buttons */
+        .tap-actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .tap-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .tap-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tap-btn-call {
+            background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+            color: var(--pure-white);
+        }
+        
+        .tap-btn-email {
+            background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+            color: var(--pure-white);
+        }
+        
+        .tap-btn-save {
+            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+            color: var(--pure-white);
+            grid-column: span 2;
+        }
+        
+        .tap-btn-share {
+            background: linear-gradient(135deg, #805ad5 0%, #6b46c1 100%);
+            color: var(--pure-white);
+            grid-column: span 2;
+        }
+        
+        .tap-btn i {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .tap-btn span {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        /* Company Info */
+        .info-section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+        
+        .section-title i {
+            color: var(--accent-gold);
+        }
+        
+        .section-title h4 {
+            margin: 0;
+            color: var(--black);
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding: 12px;
+            background-color: rgba(245, 247, 250, 0.7);
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-gold);
+        }
+        
+        .info-icon {
+            color: var(--accent-gold);
+            font-size: 18px;
+            margin-right: 12px;
+            margin-top: 3px;
+            min-width: 24px;
+        }
+        
+        /* Slideshow */
+        .slideshow-container {
+            position: relative;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        /* Black Footer */
+        .black-footer {
+            background-color: var(--black);
+            color: var(--pure-white);
+            padding: 30px 0 20px;
+        }
+        
+        .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo span {
+            color: var(--accent-gold);
+        }
+        
+        .footer-text {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--pure-white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent-gold);
+            color: var(--black);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+            opacity: 0.7;
+        }
+        
+        /* Admin Login Button */
+        .admin-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--black);
+            color: var(--pure-white);
+            border-radius: 50px;
+            padding: 12px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        
+        .admin-btn:hover {
+            background: var(--accent-gold);
+            color: var(--black);
+            transform: translateY(-3px);
+            text-decoration: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tap-actions {
+                grid-template-columns: 1fr;
+            }
+            
+            .tap-btn-save, .tap-btn-share {
+                grid-column: span 1;
+            }
+            
+            .profile-img {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .slideshow-container {
+                height: 180px;
+            }
+            
+            .admin-btn {
+                bottom: 15px;
+                right: 15px;
+                padding: 10px 15px;
+            }
+        }
+        
+        /* Tap Animation */
+        @keyframes tapPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+        
+        .tap-btn:active {
+            animation: tapPulse 0.2s ease;
+        }
+        
+        /* Success Toast */
+        .toast {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: var(--success-green);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1001;
+            max-width: 300px;
+        }
+        
+        .toast.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Black Header -->
+    <header class="black-header">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="#" class="logo">
+                    <i class="fas fa-building logo-icon"></i>
+                    WOODTEQPH<span>PRIME</span>
+                </a>
+                <div class="qr-indicator">
+                    <i class="fas fa-qrcode"></i>
+                    <span>Tap & Save Card</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8">
+                    <!-- Profile Card -->
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-badge" id="position">Sales Executive</div>
+                            <img id="profileImage" src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="profile-img" alt="John Rodriguez">
+                            <h2 id="fullName" class="profile-name">John Michael Rodriguez</h2>
+                            <div id="position" class="profile-title">Senior Sales Executive</div>
+                            <div id="companyName" class="profile-company">Woodteqph Prime Corporation</div>
+                        </div>
+                        
+                        <div class="profile-body">
+                            <!-- Tap Action Buttons -->
+                            <div class="tap-actions">
+                                <!-- Call Button -->
+                                <a href="tel:+639171234567" class="tap-btn tap-btn-call">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <span>TAP TO CALL</span>
+                                </a>
+                                
+                                <!-- Email Button -->
+                                <a href="mailto:sales@woodteqphprime.com" class="tap-btn tap-btn-email">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>TAP TO EMAIL</span>
+                                </a>
+                                
+                                <!-- Save Contact Button -->
+                                <button class="tap-btn tap-btn-save" id="saveContactBtn">
+                                    <i class="fas fa-save"></i>
+                                    <span>TAP TO SAVE CONTACT</span>
+                                </button>
+                                
+                                <!-- Share Button -->
+                                <button class="tap-btn tap-btn-share" id="shareCardBtn">
+                                    <i class="fas fa-share-alt"></i>
+                                    <span>TAP TO SHARE CARD</span>
+                                </button>
+                            </div>
+                            
+                            <!-- Company Information -->
+                            <div class="info-section">
+                                <div class="section-title">
+                                    <i class="fas fa-building"></i>
+                                    <h4>Company Information</h4>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <i class="fas fa-info-circle info-icon"></i>
+                                    <div>
+                                        <strong>About</strong>
+                                        <p id="aboutCompany" class="mb-0 small">Woodteqph Prime Corporation specializes in premium construction, custom cabinetry, and luxury interior fit-outs for residential and commercial clients.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <i class="fas fa-map-marker-alt info-icon"></i>
+                                    <div>
+                                        <strong>Address</strong>
+                                        <p id="companyAddress" class="mb-0 small">123 Construction Ave., Makati City, Metro Manila 1200</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <i class="fas fa-globe info-icon"></i>
+                                    <div>
+                                        <strong>Website</strong>
+                                        <p class="mb-0 small">
+                                            <a href="#" id="companyWebsite" class="text-decoration-none" style="color: var(--accent-gold); font-weight: 500;">
+                                                www.woodteqphprime.com
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <i class="fas fa-clock info-icon"></i>
+                                    <div>
+                                        <strong>Business Hours</strong>
+                                        <p class="mb-0 small">Mon-Fri: 8:00 AM - 6:00 PM</p>
+                                        <p class="mb-0 small">Sat: 9:00 AM - 2:00 PM</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Projects Slideshow -->
+                            <div class="info-section">
+                                <div class="section-title">
+                                    <i class="fas fa-images"></i>
+                                    <h4>Our Projects</h4>
+                                </div>
+                                
+                                <div class="slideshow-container">
+                                    <!-- Slides will be added dynamically -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Black Footer -->
+    <footer class="black-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="footer-logo">WOODTEQPH<span>PRIME</span></div>
+                    <div class="footer-text">
+                        Premium construction and interior solutions since 2008. Specializing in custom cabinetry, luxury residential interiors, and commercial fit-outs.
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <h5 class="mb-3" style="color: var(--accent-gold);">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="login.html" class="text-light text-decoration-none">
+                                <i class="fas fa-sign-in-alt me-2"></i>Admin Login
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-light text-decoration-none">
+                                <i class="fas fa-file-pdf me-2"></i>Download Brochure
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-light text-decoration-none">
+                                <i class="fas fa-calendar-alt me-2"></i>Book Consultation
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-light text-decoration-none">
+                                <i class="fas fa-map-marked-alt me-2"></i>Visit Showroom
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p class="mb-0">© 2023 Woodteqph Prime Corporation. All rights reserved.</p>
+                <p class="mb-0">Digital Business Card v2.0 | Tap & Save Technology</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Admin Login Button -->
+    <a href="login.html" class="admin-btn">
+        <i class="fas fa-sign-in-alt"></i>
+        <span>Admin Login</span>
+    </a>
+
+    <!-- Success Toast -->
+    <div class="toast" id="successToast">
+        <div class="d-flex align-items-center">
+            <i class="fas fa-check-circle me-2"></i>
+            <span id="toastMessage">Contact saved successfully!</span>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Default slideshow images
+        const slideshowImages = [
+            "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+            "https://images.unsplash.com/photo-1600585154340-963ed7476c5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+            "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+            "https://images.unsplash.com/photo-1616587894289-86480e533129?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+        ];
+        
+        // Load profile data from localStorage
+        function loadProfileData() {
+            if (localStorage.getItem('woodteqphProfile')) {
+                try {
+                    const profileData = JSON.parse(localStorage.getItem('woodteqphProfile'));
+                    
+                    // Update profile information
+                    if (profileData.profileImage) {
+                        document.getElementById('profileImage').src = profileData.profileImage;
+                    }
+                    if (profileData.fullName) {
+                        document.getElementById('fullName').textContent = profileData.fullName;
+                    }
+                    if (profileData.position) {
+                        document.querySelectorAll('#position').forEach(el => {
+                            el.textContent = profileData.position;
+                        });
+                    }
+                    if (profileData.companyName) {
+                        document.getElementById('companyName').textContent = profileData.companyName;
+                    }
+                    if (profileData.aboutCompany) {
+                        document.getElementById('aboutCompany').textContent = profileData.aboutCompany;
+                    }
+                    if (profileData.companyAddress) {
+                        document.getElementById('companyAddress').textContent = profileData.companyAddress;
+                    }
+                    if (profileData.contactNumber) {
+                        document.querySelector('a[href^="tel:"]').href = `tel:${profileData.contactNumber}`;
+                    }
+                    if (profileData.emailAddress) {
+                        document.querySelector('a[href^="mailto:"]').href = `mailto:${profileData.emailAddress}`;
+                    }
+                    if (profileData.companyWebsite) {
+                        const websiteLink = document.getElementById('companyWebsite');
+                        const websiteText = profileData.companyWebsite.replace('https://', '').replace('http://', '');
+                        websiteLink.textContent = websiteText;
+                        websiteLink.href = profileData.companyWebsite.startsWith('http') ? 
+                            profileData.companyWebsite : `https://${profileData.companyWebsite}`;
+                    }
+                    
+                    // Update slideshow if available
+                    if (profileData.slideshowImages && profileData.slideshowImages.length > 0) {
+                        initializeSlideshow(profileData.slideshowImages);
+                    } else {
+                        initializeSlideshow(slideshowImages);
+                    }
+                    
+                } catch (error) {
+                    console.error('Error loading profile data:', error);
+                    initializeSlideshow(slideshowImages);
+                }
+            } else {
+                // Use default data
+                initializeSlideshow(slideshowImages);
+            }
+        }
+        
+        // Initialize slideshow
+        function initializeSlideshow(images) {
+            const slideshowContainer = document.querySelector('.slideshow-container');
+            slideshowContainer.innerHTML = '';
+            
+            images.forEach((image, index) => {
+                const slide = document.createElement('div');
+                slide.className = `slide ${index === 0 ? 'active' : ''}`;
+                slide.style.backgroundImage = `url('${image}')`;
+                slideshowContainer.appendChild(slide);
+            });
+            
+            // Start slideshow
+            startSlideshow();
+        }
+        
+        // Start slideshow animation
+        function startSlideshow() {
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+            
+            setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }, 4000);
+        }
+        
+        // Generate vCard for contact saving
+        function generateVCard() {
+            const profileData = localStorage.getItem('woodteqphProfile') ? 
+                JSON.parse(localStorage.getItem('woodteqphProfile')) : {};
+            
+            const name = profileData.fullName || 'John Michael Rodriguez';
+            const company = profileData.companyName || 'Woodteqph Prime Corporation';
+            const title = profileData.position || 'Senior Sales Executive';
+            const phone = profileData.contactNumber || '+639171234567';
+            const email = profileData.emailAddress || 'sales@woodteqphprime.com';
+            const address = profileData.companyAddress || '123 Construction Ave., Makati City';
+            const website = profileData.companyWebsite || 'https://www.woodteqphprime.com';
+            
+            // Create vCard content
+            const vCard = `BEGIN:VCARD
+VERSION:3.0
+FN:${name}
+ORG:${company}
+TITLE:${title}
+TEL;TYPE=WORK,VOICE:${phone}
+EMAIL;TYPE=PREF,INTERNET:${email}
+ADR;TYPE=WORK:;;${address}
+URL:${website}
+NOTE:Digital Business Card - Woodteqph Prime Corporation
+END:VCARD`;
+            
+            return vCard;
+        }
+        
+        // Save contact function
+        function saveContact() {
+            const vCardContent = generateVCard();
+            
+            // Create blob for vCard file
+            const blob = new Blob([vCardContent], { type: 'text/vcard' });
+            const url = URL.createObjectURL(blob);
+            
+            // Create download link
+            const downloadLink = document.createElement('a');
+            downloadLink.href = url;
+            downloadLink.download = 'woodteqph-contact.vcf';
+            
+            // Trigger download
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            
+            // Clean up
+            setTimeout(() => {
+                URL.revokeObjectURL(url);
+            }, 100);
+            
+            // Show success message
+            showToast('Contact saved! Check your downloads.');
+        }
+        
+        // Share card function
+        function shareCard() {
+            if (navigator.share) {
+                // Use Web Share API if available (mobile devices)
+                navigator.share({
+                    title: 'Woodteqph Prime Corporation',
+                    text: 'Check out this digital business card from Woodteqph Prime Corporation',
+                    url: window.location.href
+                })
+                .then(() => showToast('Card shared successfully!'))
+                .catch(error => console.log('Sharing cancelled:', error));
+            } else {
+                // Fallback for desktop
+                navigator.clipboard.writeText(window.location.href)
+                    .then(() => showToast('Link copied to clipboard!'))
+                    .catch(err => {
+                        // Old school fallback
+                        const textArea = document.createElement('textarea');
+                        textArea.value = window.location.href;
+                        document.body.appendChild(textArea);
+                        textArea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textArea);
+                        showToast('Link copied to clipboard!');
+                    });
+            }
+        }
+        
+        // Show toast notification
+        function showToast(message) {
+            const toast = document.getElementById('successToast');
+            const toastMessage = document.getElementById('toastMessage');
+            
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load profile data
+            loadProfileData();
+            
+            // Add event listeners for tap buttons
+            document.getElementById('saveContactBtn').addEventListener('click', saveContact);
+            document.getElementById('shareCardBtn').addEventListener('click', shareCard);
+            
+            // Add tap feedback to all buttons
+            const tapButtons = document.querySelectorAll('.tap-btn');
+            tapButtons.forEach(button => {
+                button.addEventListener('touchstart', function() {
+                    this.style.opacity = '0.8';
+                });
+                button.addEventListener('touchend', function() {
+                    this.style.opacity = '1';
+                });
+            });
+            
+            // Update website link to open in new tab
+            const websiteLink = document.getElementById('companyWebsite');
+            if (websiteLink) {
+                websiteLink.target = '_blank';
+                websiteLink.rel = 'noopener noreferrer';
+            }
+            
+            // Add click sound effect for better UX (optional)
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            
+            function playTapSound() {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = 800;
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.1);
+            }
+            
+            // Optional: Uncomment to add tap sounds
+            // document.querySelectorAll('.tap-btn').forEach(btn => {
+            //     btn.addEventListener('click', playTapSound);
+            // });
+        });
+        
+        // Handle orientation change for better mobile experience
+        window.addEventListener('orientationchange', function() {
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 100);
+        });
+    </script>
+</body>
+</html>

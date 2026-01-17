@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile | Woodteqph Prime Corporation</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --corporate-blue: #1a365d;
+            --accent-gold: #d4af37;
+            --light-gold: #f4e4aa;
+            --dark-blue: #0f2642;
+            --light-blue: #2d4a7c;
+            --pure-white: #ffffff;
+            --light-gray: #f5f7fa;
+            --medium-gray: #e1e8f0;
+            --dark-gray: #4a5568;
+            --text-dark: #2d3748;
+            --success-green: #38a169;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light-gray);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        /* Login Check Overlay */
+        #loginCheck {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--corporate-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        
+        .login-check-content {
+            text-align: center;
+            color: var(--pure-white);
+            max-width: 400px;
+            padding: 40px;
+        }
+        
+        .login-check-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid var(--accent-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .logout-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--corporate-blue);
+            color: var(--pure-white);
+            border-radius: 4px;
+            padding: 10px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logout-btn:hover {
+            background: var(--dark-blue);
+            color: var(--pure-white);
+            transform: translateY(-2px);
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--corporate-blue);
+        }
+        
+        /* Header */
+        .edit-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-top: 20px;
+        }
+        
+        .edit-title {
+            color: var(--corporate-blue);
+            display: inline-block;
+            padding-bottom: 10px;
+            position: relative;
+        }
+        
+        .edit-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-gold);
+        }
+        
+        /* Edit Card */
+        .edit-card {
+            background-color: var(--pure-white);
+            border-radius: 8px;
+            border: 1px solid var(--medium-gray);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            color: var(--accent-gold);
+            margin-right: 10px;
+        }
+        
+        /* Form Elements */
+        .form-label {
+            font-weight: 600;
+            color: var(--corporate-blue);
+            margin-bottom: 8px;
+        }
+        
+        .form-control {
+            background-color: var(--pure-white);
+            border: 1px solid var(--medium-gray);
+            color: var(--text-dark);
+            padding: 12px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            background-color: var(--pure-white);
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.15);
+            color: var(--text-dark);
+        }
+        
+        .form-text {
+            color: var(--dark-gray);
+            font-size: 13px;
+            margin-top: 5px;
+        }
+        
+        /* Buttons */
+        .btn-save {
+            background-color: var(--success-green);
+            color: var(--pure-white);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .btn-save:hover {
+            background-color: #2f855a;
+            color: var(--pure-white);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(56, 161, 105, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: var(--medium-gray);
+            color: var(--text-dark);
+            border: 1px solid var(--medium-gray);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #cbd5e0;
+            color: var(--text-dark);
+        }
+        
+        /* Image Preview */
+        .image-preview {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--accent-gold);
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .slideshow-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .slideshow-preview-img {
+            width: 100px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid var(--medium-gray);
+        }
+        
+        /* Back Button */
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--corporate-blue);
+            color: var(--pure-white);
+            border-radius: 4px;
+            padding: 10px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .back-btn:hover {
+            background: var(--dark-blue);
+            color: var(--pure-white);
+            transform: translateX(-3px);
+            text-decoration: none;
+        }
+        
+        /* Instructions */
+        .instructions {
+            background: rgba(26, 54, 93, 0.05);
+            border-left: 4px solid var(--accent-gold);
+            padding: 15px;
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 20px;
+        }
+        
+        /* Tabs */
+        .tab-content {
+            padding: 20px 0;
+        }
+        
+        .nav-tabs {
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        
+        .nav-tabs .nav-link {
+            color: var(--dark-gray);
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid transparent;
+            padding: 12px 20px;
+            font-weight: 500;
+        }
+        
+        .nav-tabs .nav-link.active {
+            color: var(--accent-gold);
+            background-color: transparent;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+        
+        /* Status Badge */
+        .status-badge {
+            background-color: rgba(56, 161, 105, 0.1);
+            color: var(--success-green);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* Alert */
+        .edit-alert {
+            background-color: rgba(26, 54, 93, 0.05);
+            border: 1px solid rgba(26, 54, 93, 0.1);
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        
+        /* Admin Info */
+        .admin-info {
+            background-color: rgba(212, 175, 55, 0.1);
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .admin-info i {
+            color: var(--accent-gold);
+            font-size: 18px;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .back-btn, .logout-btn {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin-bottom: 20px;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .edit-header {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Check Overlay -->
+    <div id="loginCheck">
+        <div class="login-check-content">
+            <div class="login-check-spinner"></div>
+            <h3>Checking Authentication...</h3>
+            <p>Please wait while we verify your login credentials.</p>
+        </div>
+    </div>
+
+    <!-- Logout Button (shown after login) -->
+    <button class="logout-btn" id="logoutButton" style="display: none;">
+        <i class="fas fa-sign-out-alt me-2"></i>Logout
+    </button>
+
+    <!-- Back Button -->
+    <button class="back-btn" id="backButton" style="display: none;">
+        <i class="fas fa-arrow-left me-2"></i>Back to Profile
+    </button>
+
+    <!-- Main Content (hidden until login verified) -->
+    <div id="mainContent" style="display: none;">
+        <!-- Header -->
+        <div class="edit-header">
+            <h1 class="edit-title"><i class="fas fa-user-edit me-2"></i>Edit Business Profile</h1>
+            <p class="text-muted mt-2">Update your corporate information and media content</p>
+        </div>
+
+        <!-- Admin Info -->
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="admin-info">
+                        <i class="fas fa-user-shield"></i>
+                        <div>
+                            <strong>Logged in as: <span id="adminUsername">Administrator</span></strong>
+                            <div class="small text-muted">Session expires in <span id="sessionTimer">--:--:--</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="instructions">
+                        <h5><i class="fas fa-info-circle me-2"></i>How to Use This Editor</h5>
+                        <p class="mb-0">All changes made here will instantly update the public business profile. The website field should include the full URL (e.g., https://www.yourcompany.com) to ensure proper linking.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Form -->
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <!-- Tabs -->
+                    <ul class="nav nav-tabs" id="editTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab">Profile</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="company-tab" data-bs-toggle="tab" data-bs-target="#company" type="button" role="tab">Company</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="media-tab" data-bs-toggle="tab" data-bs-target="#media" type="button" role="tab">Media</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="security-tab" data-bs-toggle="tab" data-bs-target="#security" type="button" role="tab">Security</button>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content" id="editTabsContent">
+                        <!-- Profile Tab -->
+                        <div class="tab-pane fade show active" id="profile" role="tabpanel">
+                            <div class="edit-card">
+                                <div class="section-title">
+                                    <i class="fas fa-user-tie"></i>
+                                    <h4 class="mb-0">Sales Executive Profile</h4>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-4 text-center mb-4">
+                                        <img id="profilePreview" src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="image-preview" alt="Profile Preview">
+                                        <div class="mt-2">
+                                            <input type="file" id="profileImageUpload" accept="image/*" class="form-control form-control-sm">
+                                        </div>
+                                        <small class="form-text">Recommended: Square image, 500x500px</small>
+                                    </div>
+                                    
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="fullName" class="form-label">Full Name</label>
+                                                <input type="text" class="form-control" id="fullName" placeholder="John Michael Rodriguez">
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="position" class="form-label">Position Title</label>
+                                                <input type="text" class="form-control" id="position" placeholder="Senior Sales Executive">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="personalTagline" class="form-label">Professional Tagline</label>
+                                            <textarea class="form-control" id="personalTagline" rows="3" placeholder="Brief professional introduction and specialization"></textarea>
+                                            <small class="form-text">This appears below your name on the profile</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Company Tab -->
+                        <div class="tab-pane fade" id="company" role="tabpanel">
+                            <div class="edit-card">
+                                <div class="section-title">
+                                    <i class="fas fa-building"></i>
+                                    <h4 class="mb-0">Company Information</h4>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="companyName" class="form-label">Company Name</label>
+                                    <input type="text" class="form-control" id="companyName" placeholder="Woodteqph Prime Corporation">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="aboutCompany" class="form-label">About the Company</label>
+                                    <textarea class="form-control" id="aboutCompany" rows="4" placeholder="Company description, services, and expertise"></textarea>
+                                    <small class="form-text">Describe your company's services and value proposition</small>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="companyAddress" class="form-label">Corporate Address</label>
+                                        <input type="text" class="form-control" id="companyAddress" placeholder="Full business address">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="contactNumber" class="form-label">Contact Number</label>
+                                        <input type="text" class="form-control" id="contactNumber" placeholder="+63 917 123 4567">
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="emailAddress" class="form-label">Email Address</label>
+                                        <input type="email" class="form-control" id="emailAddress" placeholder="sales@company.com">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="companyWebsite" class="form-label">Company Website</label>
+                                        <input type="url" class="form-control" id="companyWebsite" placeholder="https://www.companywebsite.com">
+                                        <small class="form-text">Include full URL with https:// for proper linking</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Media Tab -->
+                        <div class="tab-pane fade" id="media" role="tabpanel">
+                            <div class="edit-card">
+                                <div class="section-title">
+                                    <i class="fas fa-photo-video"></i>
+                                    <h4 class="mb-0">Media Content</h4>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h5 class="mb-3"><i class="fas fa-video me-2"></i>Introduction Video</h5>
+                                    <div class="mb-3">
+                                        <label for="videoUrl" class="form-label">Video URL</label>
+                                        <input type="url" class="form-control" id="videoUrl" placeholder="https://example.com/video.mp4">
+                                        <small class="form-text">Direct link to MP4 video file. For demo, we use a sample video.</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="videoPoster" class="form-label">Video Thumbnail Image URL</label>
+                                        <input type="url" class="form-control" id="videoPoster" placeholder="https://example.com/thumbnail.jpg">
+                                        <small class="form-text">Image shown before video plays</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h5 class="mb-3"><i class="fas fa-images me-2"></i>Project Portfolio Images</h5>
+                                    <div class="mb-3">
+                                        <label class="form-label">Upload Project Images</label>
+                                        <input type="file" class="form-control" id="slideshowUpload" accept="image/*" multiple>
+                                        <small class="form-text">Select multiple images for the portfolio slideshow</small>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <label class="form-label">Current Portfolio Images</label>
+                                        <div class="slideshow-preview" id="slideshowPreview">
+                                            <!-- Images will be added here dynamically -->
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="edit-alert">
+                                    <i class="fas fa-lightbulb text-warning me-2"></i>
+                                    <strong>Note:</strong> In a production environment, uploaded files would be stored on a server. This demo simulates the functionality using placeholder URLs.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Security Tab -->
+                        <div class="tab-pane fade" id="security" role="tabpanel">
+                            <div class="edit-card">
+                                <div class="section-title">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <h4 class="mb-0">Security Settings</h4>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h5 class="mb-3"><i class="fas fa-key me-2"></i>Change Password</h5>
+                                    <div class="mb-3">
+                                        <label for="currentPassword" class="form-label">Current Password</label>
+                                        <input type="password" class="form-control" id="currentPassword" placeholder="Enter current password">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="newPassword" class="form-label">New Password</label>
+                                        <input type="password" class="form-control" id="newPassword" placeholder="Enter new password">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="confirmPassword" class="form-label">Confirm New Password</label>
+                                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm new password">
+                                    </div>
+                                    <button id="changePasswordBtn" class="btn btn-secondary">
+                                        <i class="fas fa-sync-alt me-2"></i>Change Password
+                                    </button>
+                                    <small class="form-text d-block mt-2">Note: Password changes are simulated for this demo. In production, this would update server-side credentials.</small>
+                                </div>
+                                
+                                <div class="edit-alert">
+                                    <i class="fas fa-info-circle text-info me-2"></i>
+                                    <strong>Security Information:</strong> This admin panel is protected by client-side authentication. For production use, implement server-side authentication and HTTPS.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Save Section -->
+                    <div class="edit-card text-center">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div>
+                                <span class="status-badge" id="saveStatus">
+                                    <i class="fas fa-circle me-1"></i>Ready to Save
+                                </span>
+                            </div>
+                            <div class="text-muted small">
+                                Last saved: <span id="lastSaved">Never</span>
+                            </div>
+                        </div>
+                        
+                        <button id="saveChanges" class="btn btn-save">
+                            <i class="fas fa-save me-2"></i>Save All Changes
+                        </button>
+                        <button id="resetDefaults" class="btn btn-secondary mt-3">
+                            <i class="fas fa-undo me-2"></i>Reset to Defaults
+                        </button>
+                        
+                        <div id="saveMessage" class="mt-3" style="display: none;">
+                            <div class="alert alert-success" style="background-color: rgba(56, 161, 105, 0.1); border-color: rgba(56, 161, 105, 0.2); color: var(--success-green);">
+                                <i class="fas fa-check-circle me-2"></i>
+                                <span id="messageText">Changes saved successfully!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Default data
+        const defaultSlideshowImages = [
+            "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+            "https://images.unsplash.com/photo-1600585154340-963ed7476c5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+            "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+            "https://images.unsplash.com/photo-1616587894289-86480e533129?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+        ];
+        
+        const defaultProfileData = {
+            profileImage: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+            fullName: "John Michael Rodriguez",
+            position: "Senior Sales Executive",
+            personalTagline: "With over 12 years of experience in high-end construction and interior solutions, I specialize in delivering premium residential and commercial projects that exceed client expectations through innovative design and meticulous execution.",
+            companyName: "Woodteqph Prime Corporation",
+            aboutCompany: "Woodteqph Prime Corporation is a premier construction and interior fit-out company specializing in custom cabinetry, luxury residential interiors, and commercial spaces. Established in 2008, we combine traditional craftsmanship with modern technology to deliver exceptional, enduring results.",
+            companyAddress: "123 Construction Avenue, Makati Central Business District, Metro Manila, Philippines 1200",
+            contactNumber: "+63 917 123 4567",
+            emailAddress: "sales@woodteqphprime.com",
+            companyWebsite: "https://www.woodteqphprime.com",
+            videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-architect-working-at-his-desk-41535-large.mp4",
+            videoPoster: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+            slideshowImages: defaultSlideshowImages
+        };
+        
+        // Check login status
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('woodteqphAdminLoggedIn');
+            const loginExpiry = localStorage.getItem('woodteqphLoginExpiry');
+            const username = localStorage.getItem('woodteqphAdminUsername');
+            
+            if (!isLoggedIn || isLoggedIn !== 'true') {
+                // Not logged in, redirect to login
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 1500);
+                return false;
+            }
+            
+            // Check if login has expired
+            const now = new Date().getTime();
+            if (!loginExpiry || now >= parseInt(loginExpiry)) {
+                // Login expired
+                localStorage.removeItem('woodteqphAdminLoggedIn');
+                localStorage.removeItem('woodteqphLoginExpiry');
+                localStorage.removeItem('woodteqphAdminUsername');
+                
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 1500);
+                return false;
+            }
+            
+            // Show admin username
+            if (username) {
+                document.getElementById('adminUsername').textContent = username;
+            }
+            
+            // Start session timer
+            startSessionTimer(parseInt(loginExpiry));
+            
+            return true;
+        }
+        
+        // Start session countdown timer
+        function startSessionTimer(expiryTime) {
+            function updateTimer() {
+                const now = new Date().getTime();
+                const timeLeft = expiryTime - now;
+                
+                if (timeLeft <= 0) {
+                    // Session expired
+                    localStorage.removeItem('woodteqphAdminLoggedIn');
+                    localStorage.removeItem('woodteqphLoginExpiry');
+                    localStorage.removeItem('woodteqphAdminUsername');
+                    window.location.href = 'login.html';
+                    return;
+                }
+                
+                // Calculate hours, minutes, seconds
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                
+                // Format as HH:MM:SS
+                const formattedTime = 
+                    String(hours).padStart(2, '0') + ':' + 
+                    String(minutes).padStart(2, '0') + ':' + 
+                    String(seconds).padStart(2, '0');
+                
+                document.getElementById('sessionTimer').textContent = formattedTime;
+            }
+            
+            // Update immediately and then every second
+            updateTimer();
+            setInterval(updateTimer, 1000);
+        }
+        
+        // Logout function
+        function logout() {
+            localStorage.removeItem('woodteqphAdminLoggedIn');
+            localStorage.removeItem('woodteqphLoginExpiry');
+            localStorage.removeItem('woodteqphAdminUsername');
+            window.location.href = 'login.html';
+        }
+        
+        // Load existing data
+        function loadExistingData() {
+            const existingData = localStorage.getItem('woodteqphProfile');
+            const lastSaved = localStorage.getItem('woodteqphLastSaved');
+            
+            if (lastSaved) {
+                document.getElementById('lastSaved').textContent = new Date(lastSaved).toLocaleString();
+            }
+            
+            if (existingData) {
+                const profileData = JSON.parse(existingData);
+                
+                // Set form values
+                document.getElementById('fullName').value = profileData.fullName || defaultProfileData.fullName;
+                document.getElementById('position').value = profileData.position || defaultProfileData.position;
+                document.getElementById('personalTagline').value = profileData.personalTagline || defaultProfileData.personalTagline;
+                document.getElementById('companyName').value = profileData.companyName || defaultProfileData.companyName;
+                document.getElementById('aboutCompany').value = profileData.aboutCompany || defaultProfileData.aboutCompany;
+                document.getElementById('companyAddress').value = profileData.companyAddress || defaultProfileData.companyAddress;
+                document.getElementById('contactNumber').value = profileData.contactNumber || defaultProfileData.contactNumber;
+                document.getElementById('emailAddress').value = profileData.emailAddress || defaultProfileData.emailAddress;
+                document.getElementById('companyWebsite').value = profileData.companyWebsite || defaultProfileData.companyWebsite;
+                document.getElementById('videoUrl').value = profileData.videoUrl || defaultProfileData.videoUrl;
+                document.getElementById('videoPoster').value = profileData.videoPoster || defaultProfileData.videoPoster;
+                
+                // Set profile image preview
+                document.getElementById('profilePreview').src = profileData.profileImage || defaultProfileData.profileImage;
+                
+                // Load slideshow images
+                loadSlideshowPreview(profileData.slideshowImages || defaultSlideshowImages);
+            } else {
+                loadDefaults();
+            }
+        }
+        
+        // Load defaults
+        function loadDefaults() {
+            document.getElementById('fullName').value = defaultProfileData.fullName;
+            document.getElementById('position').value = defaultProfileData.position;
+            document.getElementById('personalTagline').value = defaultProfileData.personalTagline;
+            document.getElementById('companyName').value = defaultProfileData.companyName;
+            document.getElementById('aboutCompany').value = defaultProfileData.aboutCompany;
+            document.getElementById('companyAddress').value = defaultProfileData.companyAddress;
+            document.getElementById('contactNumber').value = defaultProfileData.contactNumber;
+            document.getElementById('emailAddress').value = defaultProfileData.emailAddress;
+            document.getElementById('companyWebsite').value = defaultProfileData.companyWebsite;
+            document.getElementById('videoUrl').value = defaultProfileData.videoUrl;
+            document.getElementById('videoPoster').value = defaultProfileData.videoPoster;
+            
+            document.getElementById('profilePreview').src = defaultProfileData.profileImage;
+            loadSlideshowPreview(defaultSlideshowImages);
+        }
+        
+        // Load slideshow preview
+        function loadSlideshowPreview(images) {
+            const previewContainer = document.getElementById('slideshowPreview');
+            previewContainer.innerHTML = '';
+            
+            images.forEach((image, index) => {
+                const img = document.createElement('img');
+                img.src = image;
+                img.className = 'slideshow-preview-img';
+                img.alt = `Project ${index + 1}`;
+                previewContainer.appendChild(img);
+            });
+        }
+        
+        // Handle profile image upload
+        document.getElementById('profileImageUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    document.getElementById('profilePreview').src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Handle slideshow image uploads
+        document.getElementById('slideshowUpload').addEventListener('change', function(e) {
+            const files = e.target.files;
+            if (files && files.length > 0) {
+                showMessage(`Selected ${files.length} image(s). In a production system, these would be uploaded to a server.`, 'info');
+            }
+        });
+        
+        // Save changes
+        document.getElementById('saveChanges').addEventListener('click', function() {
+            // Get form values
+            const profileData = {
+                profileImage: document.getElementById('profilePreview').src,
+                fullName: document.getElementById('fullName').value,
+                position: document.getElementById('position').value,
+                personalTagline: document.getElementById('personalTagline').value,
+                companyName: document.getElementById('companyName').value,
+                aboutCompany: document.getElementById('aboutCompany').value,
+                companyAddress: document.getElementById('companyAddress').value,
+                contactNumber: document.getElementById('contactNumber').value,
+                emailAddress: document.getElementById('emailAddress').value,
+                companyWebsite: document.getElementById('companyWebsite').value || defaultProfileData.companyWebsite,
+                videoUrl: document.getElementById('videoUrl').value || defaultProfileData.videoUrl,
+                videoPoster: document.getElementById('videoPoster').value || defaultProfileData.videoPoster,
+                slideshowImages: defaultSlideshowImages
+            };
+            
+            // Save to localStorage
+            localStorage.setItem('woodteqphProfile', JSON.stringify(profileData));
+            localStorage.setItem('woodteqphLastSaved', new Date().toISOString());
+            
+            // Update status
+            document.getElementById('lastSaved').textContent = new Date().toLocaleString();
+            document.getElementById('saveStatus').innerHTML = '<i class="fas fa-check-circle me-1"></i>Saved Successfully';
+            document.getElementById('saveStatus').style.backgroundColor = 'rgba(56, 161, 105, 0.1)';
+            document.getElementById('saveStatus').style.color = 'var(--success-green)';
+            
+            // Show success message
+            showMessage('Profile updated successfully! Changes are now live on the public profile.', 'success');
+            
+            // Reset status after 3 seconds
+            setTimeout(() => {
+                document.getElementById('saveStatus').innerHTML = '<i class="fas fa-circle me-1"></i>Ready to Save';
+                document.getElementById('saveStatus').style.backgroundColor = 'rgba(26, 54, 93, 0.1)';
+                document.getElementById('saveStatus').style.color = 'var(--corporate-blue)';
+            }, 3000);
+        });
+        
+        // Reset to defaults
+        document.getElementById('resetDefaults').addEventListener('click', function() {
+            if (confirm('Are you sure you want to reset all fields to default values? This will overwrite all current changes.')) {
+                localStorage.removeItem('woodteqphProfile');
+                localStorage.removeItem('woodteqphLastSaved');
+                loadDefaults();
+                document.getElementById('lastSaved').textContent = 'Never';
+                showMessage('All fields reset to default values.', 'success');
+            }
+        });
+        
+        // Change password (simulated)
+        document.getElementById('changePasswordBtn').addEventListener('click', function() {
+            const currentPass = document.getElementById('currentPassword').value;
+            const newPass = document.getElementById('newPassword').value;
+            const confirmPass = document.getElementById('confirmPassword').value;
+            
+            if (!currentPass || !newPass || !confirmPass) {
+                showMessage('Please fill in all password fields.', 'error');
+                return;
+            }
+            
+            if (newPass !== confirmPass) {
+                showMessage('New passwords do not match.', 'error');
+                return;
+            }
+            
+            if (newPass.length < 6) {
+                showMessage('New password must be at least 6 characters.', 'error');
+                return;
+            }
+            
+            // Simulate password change
+            showMessage('Password changed successfully! (Note: This is a simulation)', 'success');
+            
+            // Clear password fields
+            document.getElementById('currentPassword').value = '';
+            document.getElementById('newPassword').value = '';
+            document.getElementById('confirmPassword').value = '';
+        });
+        
+        // Show message
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('saveMessage');
+            const messageText = document.getElementById('messageText');
+            
+            messageText.textContent = text;
+            
+            // Update alert class based on type
+            const alertDiv = messageDiv.querySelector('.alert');
+            if (type === 'success') {
+                alertDiv.style.backgroundColor = 'rgba(56, 161, 105, 0.1)';
+                alertDiv.style.borderColor = 'rgba(56, 161, 105, 0.2)';
+                alertDiv.style.color = 'var(--success-green)';
+            } else if (type === 'error') {
+                alertDiv.style.backgroundColor = 'rgba(229, 62, 62, 0.1)';
+                alertDiv.style.borderColor = 'rgba(229, 62, 62, 0.2)';
+                alertDiv.style.color = '#e53e3e';
+            } else if (type === 'info') {
+                alertDiv.style.backgroundColor = 'rgba(13, 202, 240, 0.1)';
+                alertDiv.style.borderColor = 'rgba(13, 202, 240, 0.2)';
+                alertDiv.style.color = '#0dcaf0';
+            }
+            
+            messageDiv.style.display = 'block';
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check login status first
+            const isAuthenticated = checkLoginStatus();
+            
+            if (isAuthenticated) {
+                // Hide login check overlay
+                setTimeout(() => {
+                    document.getElementById('loginCheck').style.display = 'none';
+                    document.getElementById('mainContent').style.display = 'block';
+                    document.getElementById('backButton').style.display = 'flex';
+                    document.getElementById('logoutButton').style.display = 'flex';
+                    
+                    // Load existing data
+                    loadExistingData();
+                }, 1000);
+            }
+            
+            // Attach logout handler
+            document.getElementById('logoutButton').addEventListener('click', logout);
+            
+            // Attach back button handler
+            document.getElementById('backButton').addEventListener('click', function() {
+                window.location.href = 'index.html';
+            });
+            
+            // Auto-save reminder
+            setInterval(() => {
+                const status = document.getElementById('saveStatus');
+                if (status.innerHTML.includes('Ready to Save')) {
+                    status.innerHTML = '<i class="fas fa-clock me-1"></i>Remember to Save';
+                    status.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
+                    status.style.color = 'var(--accent-gold)';
+                    
+                    setTimeout(() => {
+                        if (status.innerHTML.includes('Remember to Save')) {
+                            status.innerHTML = '<i class="fas fa-circle me-1"></i>Ready to Save';
+                            status.style.backgroundColor = 'rgba(26, 54, 93, 0.1)';
+                            status.style.color = 'var(--corporate-blue)';
+                        }
+                    }, 5000);
+                }
+            }, 300000); // Remind every 5 minutes
+        });
+    </script>
+</body>
+</html>
