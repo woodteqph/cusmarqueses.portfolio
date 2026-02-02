@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Swiper CSS for sliders -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
     <style>
         :root {
             /* Dark mode colors (default) */
@@ -173,18 +175,6 @@
             text-transform: uppercase;
         }
         
-        .qr-badge {
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid var(--accent-gold);
-            border-radius: 20px;
-            padding: 8px 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            color: var(--text-light);
-        }
-        
         /* Main Content */
         .main-content {
             padding: 30px 0 50px;
@@ -210,7 +200,7 @@
         }
         
         .profile-header {
-            padding: 40px 20px; /* Increased padding */
+            padding: 40px 20px;
             text-align: center;
             position: relative;
             background: var(--header-bg);
@@ -218,13 +208,13 @@
         
         .profile-badge {
             position: absolute;
-            top: 25px; /* Adjusted position */
-            right: 25px; /* Adjusted position */
+            top: 25px;
+            right: 25px;
             background: var(--accent-gold);
             color: var(--primary-black);
-            padding: 8px 18px; /* Slightly larger */
+            padding: 8px 18px;
             border-radius: 20px;
-            font-size: 13px; /* Slightly larger */
+            font-size: 13px;
             font-weight: 600;
             box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
         }
@@ -232,58 +222,57 @@
         .profile-img-container {
             position: relative;
             display: inline-block;
-            margin-bottom: 25px; /* Increased margin */
+            margin-bottom: 25px;
         }
         
         .profile-img {
-            width: 150px; /* ENLARGED from 120px */
-            height: 150px; /* ENLARGED from 120px */
+            width: 150px;
+            height: 150px;
             object-fit: cover;
             border-radius: 50%;
-            border: 4px solid var(--accent-gold); /* Thicker border */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); /* Stronger shadow */
+            border: 4px solid var(--accent-gold);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
         }
         
         .profile-verify {
             position: absolute;
-            bottom: 15px; /* Adjusted position */
-            right: 15px; /* Adjusted position */
+            bottom: 15px;
+            right: 15px;
             background: var(--accent-gold);
             color: var(--primary-black);
-            width: 28px; /* Slightly larger */
-            height: 28px; /* Slightly larger */
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 13px; /* Slightly larger */
+            font-size: 13px;
         }
         
         .profile-name {
-            font-size: 32px; /* ENLARGED from 26px */
-            margin-bottom: 8px; /* Increased margin */
+            font-size: 32px;
+            margin-bottom: 8px;
             background: linear-gradient(90deg, var(--accent-gold), var(--light-gold));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            font-weight: 700; /* Bolder */
+            font-weight: 700;
         }
         
         .profile-title {
             color: var(--text-gray);
-            font-size: 18px; /* ENLARGED from 16px */
-            margin-bottom: 12px; /* Increased margin */
+            font-size: 18px;
+            margin-bottom: 12px;
             font-weight: 500;
         }
         
         .profile-company {
             color: var(--text-light);
-            font-size: 22px; /* ENLARGED from 18px */
-            font-weight: 600; /* Bolder */
+            font-size: 22px;
+            font-weight: 600;
             letter-spacing: 0.5px;
         }
         
-        /* Enhanced profile section with more prominence */
         .profile-intro {
             margin-top: 20px;
             padding: 15px;
@@ -327,10 +316,6 @@
             box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15);
         }
         
-        .tap-card:active {
-            transform: scale(0.98);
-        }
-        
         .tap-icon {
             font-size: 32px;
             margin-bottom: 12px;
@@ -356,13 +341,13 @@
             transform: translateY(0);
         }
         
-        /* Video Section - REVISED for local video */
-        .video-section {
+        /* Video Slider Section - Facebook Video Links */
+        .video-slider-section {
             padding: 0 20px;
             margin-bottom: 30px;
         }
         
-        .video-container {
+        .video-slider-container {
             position: relative;
             border-radius: 15px;
             overflow: hidden;
@@ -370,151 +355,213 @@
             background: var(--dark-black);
         }
         
-        /* Updated video player styling */
-        #videoPlayer {
-            width: 100%;
-            height: 280px; /* Increased height for better video viewing */
-            border: none;
-            border-radius: 15px;
-            display: block; /* Always show, but hide controls initially */
-            object-fit: cover; /* Ensure video covers the area nicely */
-        }
-        
-        .video-placeholder {
+        .swiper {
             width: 100%;
             height: 280px;
-            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            border-radius: 15px;
+        }
+        
+        .swiper-slide {
+            position: relative;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: white;
-            cursor: pointer;
-            position: relative;
             border-radius: 15px;
             overflow: hidden;
         }
         
-        .video-poster {
+        /* Facebook Video Container */
+        .fb-video-container {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .fb-video-thumbnail {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: 15px;
+        }
+        
+        /* Facebook Icon positioning */
+        .fb-icon {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #1877F2, #0D5FDB);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            z-index: 3;
+            box-shadow: 0 4px 12px rgba(24, 119, 242, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .fb-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(24, 119, 242, 0.6);
+        }
+        
+        .video-overlay {
             position: absolute;
             top: 0;
             left: 0;
-            opacity: 0.7;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.2) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 20px;
+            text-align: center;
+            z-index: 1;
         }
         
-        .play-btn-overlay {
-            position: relative;
-            background: rgba(212, 175, 55, 0.9);
-            color: var(--primary-black);
+        .video-overlay:hover {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
+        }
+        
+        .play-button {
             width: 70px;
             height: 70px;
+            background: rgba(24, 119, 242, 0.9);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 28px;
-            cursor: pointer;
+            margin-bottom: 20px;
             transition: all 0.3s ease;
-            z-index: 2;
-            margin-bottom: 15px;
+            box-shadow: 0 10px 30px rgba(24, 119, 242, 0.4);
         }
         
-        .play-btn-overlay:hover {
-            background: var(--accent-gold);
+        .video-overlay:hover .play-button {
             transform: scale(1.1);
+            background: rgba(24, 119, 242, 1);
+            box-shadow: 0 15px 40px rgba(24, 119, 242, 0.6);
         }
         
-        .video-placeholder-text {
-            position: relative;
-            z-index: 2;
+        .video-title {
+            font-size: 20px;
+            font-weight: 600;
             text-align: center;
-            color: white;
-            font-size: 14px;
-            font-weight: 500;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            padding: 0 20px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+            line-height: 1.3;
         }
         
-        /* Video controls */
-        .video-controls {
-            display: none;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            padding: 15px;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 10;
-        }
-        
-        .video-controls.show {
-            display: flex;
-        }
-        
-        .video-btn {
-            background: rgba(212, 175, 55, 0.8);
-            border: none;
-            color: var(--primary-black);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .video-btn:hover {
-            background: var(--accent-gold);
-            transform: scale(1.1);
-        }
-        
-        /* Projects Gallery */
-        .projects-section {
+        /* Projects Reels Section - Facebook Video Links */
+        .projects-reels-section {
             padding: 0 20px;
             margin-bottom: 30px;
         }
         
-        .projects-grid {
+        .reels-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
             margin-top: 15px;
         }
         
-        .project-item {
+        /* Reel Item with proper aspect ratio for reels */
+        .reel-item {
             position: relative;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
             cursor: pointer;
-            height: 150px;
             background: var(--dark-black);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            height: 280px; /* Taller for reels format */
+            aspect-ratio: 9/16;
+            display: block;
         }
         
-        .project-item:hover {
-            transform: translateY(-5px);
+        /* Add a subtle animation for reel hover */
+        @keyframes reelPulse {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+        
+        .reel-item:hover {
+            transform: translateY(-8px);
             border-color: var(--accent-gold);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25);
+            animation: reelPulse 2s infinite;
         }
         
-        .project-image {
+        .reel-thumbnail {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
         
-        .project-item:hover .project-image {
-            transform: scale(1.1);
+        .reel-item:hover .reel-thumbnail {
+            transform: scale(1.05);
         }
         
-        .project-overlay {
+        /* Reel Badge */
+        .reel-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, #1877F2, #0D5FDB);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Play icon for reels */
+        .reel-play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(24, 119, 242, 0.9);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+            z-index: 2;
+            box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4);
+        }
+        
+        .reel-item:hover .reel-play-icon {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+            background: rgba(24, 119, 242, 1);
+        }
+        
+        .reel-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
@@ -522,24 +569,61 @@
             background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
             padding: 10px;
             color: white;
-            font-size: 12px;
+            font-size: 11px;
+            z-index: 2;
         }
         
-        .add-project {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: rgba(212, 175, 55, 0.1);
-            border: 2px dashed var(--accent-gold);
-            color: var(--accent-gold);
-            font-size: 14px;
+        /* Projects Catalog Section */
+        .projects-catalog-section {
+            padding: 0 20px;
+            margin-bottom: 30px;
+        }
+        
+        .catalog-slider-container {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+        
+        .catalog-swiper {
+            width: 100%;
+            height: 180px;
+            border-radius: 15px;
+        }
+        
+        .catalog-slide {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
             cursor: pointer;
         }
         
-        .add-project i {
-            font-size: 24px;
-            margin-bottom: 8px;
+        .catalog-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.5s ease;
+        }
+        
+        .catalog-slide:hover .catalog-image {
+            transform: scale(1.05);
+        }
+        
+        .catalog-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 15px;
+            color: white;
+        }
+        
+        .catalog-overlay h6 {
+            margin-bottom: 5px;
+            color: var(--accent-gold);
         }
         
         /* Company Info */
@@ -757,6 +841,23 @@
             to { transform: translateX(0); opacity: 1; }
         }
         
+        /* Loading Animation */
+        .loader {
+            display: none;
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(212, 175, 55, 0.3);
+            border-top: 3px solid var(--accent-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .tap-grid {
@@ -764,17 +865,17 @@
                 gap: 12px;
             }
             
-            .projects-grid {
+            .reels-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             
             .profile-name {
-                font-size: 26px; /* Adjusted for mobile */
+                font-size: 26px;
             }
             
             .profile-img {
-                width: 130px; /* Adjusted for mobile */
-                height: 130px; /* Adjusted for mobile */
+                width: 130px;
+                height: 130px;
             }
             
             .admin-btn {
@@ -801,31 +902,60 @@
                 font-size: 18px;
             }
             
-            /* Adjust video size for mobile */
-            #videoPlayer {
-                height: 200px;
+            .swiper {
+                height: 220px;
             }
             
-            .video-placeholder {
-                height: 200px;
+            .reel-item {
+                height: 320px;
+                aspect-ratio: 9/16;
+            }
+            
+            .catalog-swiper {
+                height: 150px;
+            }
+            
+            .video-title {
+                font-size: 16px;
+            }
+            
+            .play-button {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+            
+            .reel-play-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
             }
         }
         
-        /* Loading Animation */
-        .loader {
-            display: none;
-            width: 30px;
-            height: 30px;
-            border: 3px solid rgba(212, 175, 55, 0.3);
-            border-top: 3px solid var(--accent-gold);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
+        @media (max-width: 576px) {
+            .reels-grid {
+                grid-template-columns: 1fr;
+                max-width: 300px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .reel-item {
+                height: 380px;
+            }
         }
         
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        @media (max-width: 480px) {
+            .reels-grid {
+                grid-template-columns: 1fr;
+                max-width: 300px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .reel-item {
+                height: 380px;
+            }
         }
     </style>
 </head>
@@ -837,24 +967,28 @@
             <i class="fas fa-sun"></i>
         </button>
     </div>
-
-    <!-- Modern Header -->
-    <header class="modern-header">
-        <div class="container">
-            <div class="header-container">
-                <a href="#" class="logo-brand">
-                    <div class="logo-icon">
-                        <i class="fas fa-building"></i>
-                    </div>
-                    <div class="logo-text">
-                        <div class="logo-main">WOODTEQPH PRIME</div>
-                        <div class="logo-sub">CONSTRUCTION</div>
-                    </div>
-                </a>
+<!-- Modern Header -->
+<header class="modern-header">
+    <div class="container">
+        <div class="header-container">
+            <a href="#" class="logo-brand" style="display: flex; align-items: center; gap: 12px;">
+                <!-- Your logo image added here -->
+                <div class="logo-icon" style="width: 50px; height: 50px;">
+                    <img 
+                        src="img/Woodteq PH logo (3).png" 
+                        alt="Woodteqph Logo" 
+                        style="width: 100%; height: auto; display: block;"
+                    >
+                </div>
                 
-            </div>
+                <div class="logo-text">
+                    <div class="logo-main" style="font-weight: bold;">WOODTEQPH PRIME</div>
+                    <div class="logo-sub" style="color: #fffffe;">CONSTRUCTION</div>
+                </div>
+            </a>
         </div>
-    </header>
+    </div>
+</header>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -866,7 +1000,6 @@
                         <div class="profile-header">
                             <div class="profile-badge" id="positionBadge">SALES EXECUTIVE</div>
                             <div class="profile-img-container">
-                                <!-- CHANGED: Local image from img folder -->
                                 <img id="profileImage" src="img/dp.jpeg" class="profile-img" alt="Profile" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'">
                                 <div class="profile-verify">
                                     <i class="fas fa-check"></i>
@@ -876,7 +1009,6 @@
                             <div id="positionTitle" class="profile-title">Sales Executive</div>
                             <div id="companyName" class="profile-company">Woodteqph Prime Corporation</div>
                             
-                            <!-- Added profile intro section -->
                             <div class="profile-intro">
                                 <p>Specializing in premium construction solutions, custom cabinetry, and luxury interior design. Dedicated to delivering excellence in every project.</p>
                             </div>
@@ -921,43 +1053,133 @@
                             </div>
                         </div>
                         
-                        <!-- Video Section - REVISED for local video -->
-                        <div class="video-section">
-                            <div class="section-header">
-                                <i class="fas fa-play-circle section-icon"></i>
-                                <h4 class="section-title">Company Video</h4>
-                            </div>
-                                <!-- Video player -->
-                                <video id="videoPlayer" preload="metadata" controls controlsList="nodownload">
-                                    <!-- CHANGE THIS to your local video file path -->
-                                    <source src="video/1129(1).mp4" type="video/mp4">
-                                    
-                                    Your browser does not support the video tag.
-                                </video>
-                                
-                                <!-- Custom video controls -->
-                                <div class="video-controls" id="videoControls">
-                                    <button class="video-btn" id="playPauseBtn">
-                                        <i class="fas fa-play"></i>
-                                    </button>
-                                    <button class="video-btn" id="muteBtn">
-                                        <i class="fas fa-volume-up"></i>
-                                    </button>
-                                    <button class="video-btn" id="fullscreenBtn">
-                                        <i class="fas fa-expand"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Projects Gallery -->
-                        <div class="projects-section">
+
+                   <!-- Projects Reels Section - TikTok Video Links -->
+<div class="projects-reels-section">
+
+  <div class="section-header">
+    <i class="fab fa-tiktok section-icon"></i>
+    <h4 class="section-title">Project Reels on TikTok</h4>
+  </div>
+
+  <div class="reels-grid">
+
+    <!-- Reel 1 -->
+    <div class="reel-item">
+      <a href="https://www.tiktok.com/@woodteqphprime/video/7602092247701605639"
+         target="_blank" rel="noopener">
+
+        <div class="tt-icon">
+          <i class="fab fa-tiktok"></i>
+        </div>
+
+        <img src="img/yes.png"
+             class="reel-thumbnail"
+             alt="Warehouse Project">
+
+        <div class="reel-play-icon">
+          <i class="fas fa-play"></i>
+        </div>
+
+        <div class="reel-overlay">Warehouse</div>
+
+        <div class="reel-badge">
+          <i class="fab fa-tiktok"></i> TikTok
+        </div>
+
+      </a>
+    </div>
+
+    <!-- Reel 2 -->
+    <div class="reel-item">
+      <a href="https://www.tiktok.com/@woodteqphprime/video/7554563283148213522"
+         target="_blank" rel="noopener">
+
+        <div class="tt-icon"><i class="fab fa-tiktok"></i></div>
+
+        <img src="img/no.png"
+             class="reel-thumbnail"
+             alt="Office Fit-out Project">
+
+        <div class="reel-play-icon"><i class="fas fa-play"></i></div>
+
+        <div class="reel-overlay">Panglao Projects </div>
+
+        <div class="reel-badge"><i class="fab fa-tiktok"></i> TikTok</div>
+
+      </a>
+    </div>
+
+    <!-- Reel 3 -->
+    <div class="reel-item">
+      <a href="https://www.tiktok.com/@woodteqphprime/video/7602090908066057479"
+         target="_blank" rel="noopener">
+
+        <div class="tt-icon"><i class="fab fa-tiktok"></i></div>
+
+        <img src="img/he.png"
+             class="reel-thumbnail"
+             alt="Custom Wardrobe Design">
+
+        <div class="reel-play-icon"><i class="fas fa-play"></i></div>
+
+        <div class="reel-overlay">Studio N Projects </div>
+
+        <div class="reel-badge"><i class="fab fa-tiktok"></i> TikTok</div>
+
+      </a>
+    </div>
+
+  </div>
+</div>
+
+                <!-- Projects Catalog Section - Picture slider -->
+                        <div class="projects-catalog-section">
                             <div class="section-header">
                                 <i class="fas fa-images section-icon"></i>
-                                <h4 class="section-title">Our Projects</h4>
+                                <h4 class="section-title">Project Gallery</h4>
                             </div>
-                            <div class="projects-grid" id="projectsGrid">
-                                <!-- Projects will be loaded dynamically -->
+                            <div class="catalog-slider-container">
+                                <div class="swiper catalogSwiper">
+                                    <div class="swiper-wrapper">
+                                        <!-- Project 1 -->
+                                        <div class="swiper-slide catalog-slide">
+                                            <img src="img/1.png" class="catalog-image" alt="Residential Project" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                                            <div class="catalog-overlay">
+                                                <h6>Luxury Villa Interior</h6>
+                                                <p class="small mb-0">Modern design with custom cabinetry</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Project 2 -->
+                                        <div class="swiper-slide catalog-slide">
+                                            <img src="img/2.png" class="catalog-image" alt="Office Project" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1600585154340-963ed7476c5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                                            <div class="catalog-overlay">
+                                                <h6>Corporate Office</h6>
+                                                <p class="small mb-0">Executive office fit-out</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Project 3 -->
+                                        <div class="swiper-slide catalog-slide">
+                                            <img src="img/3.png" class="catalog-image" alt="Kitchen Project" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                                            <div class="catalog-overlay">
+                                                <h6>Modern Kitchen</h6>
+                                                <p class="small mb-0">Custom cabinet installation</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Project 4 -->
+                                        <div class="swiper-slide catalog-slide">
+                                            <img src="img/4.png" class="catalog-image" alt="Showroom Project" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1616587894289-86480e533129?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                                            <div class="catalog-overlay">
+                                                <h6>Retail Showroom</h6>
+                                                <p class="small mb-0">Display area design</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
                             </div>
                         </div>
                         
@@ -1102,19 +1324,46 @@
         </div>
     </div>
 
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
     <!-- JavaScript -->
     <script>
-        // Default configuration
-        const defaultConfig = {
-            profileImage: "img/dp.jpeg", // CHANGED: Local image path
-            videoUrl: "video/company-intro.mp4", // CHANGED: Local video file
-            videoType: "local", // CHANGED: Now using local video
-            videoPoster: "img/video-poster.jpg", // Optional: Add a poster image for the video
-            projects: [
-                "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1600585154340-963ed7476c5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                "https://images.unsplash.com/photo-1616587894289-86480e533129?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        // Facebook Video Links Configuration
+        const fbVideos = {
+            companyVideos: [
+                {
+                    url: "https://www.facebook.com/facebook/videos/your-video-id-1/",
+                    thumbnail: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    title: "Company Introduction"
+                },
+                {
+                    url: "https://www.facebook.com/facebook/videos/your-video-id-2/",
+                    thumbnail: "https://images.unsplash.com/photo-1503386435952-d7918b99d4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    title: "Our Team at Work"
+                },
+                {
+                    url: "https://www.facebook.com/facebook/videos/your-video-id-3/",
+                    thumbnail: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    title: "Client Testimonials"
+                }
+            ],
+            projectReels: [
+                {
+                    url: "https://www.facebook.com/facebook/reel/your-reel-id-1/",
+                    thumbnail: "https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    title: "Modern Kitchen Cabinet Installation"
+                },
+                {
+                    url: "https://www.facebook.com/facebook/reel/your-reel-id-2/",
+                    thumbnail: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    title: "Office Fit-out Timelapse"
+                },
+                {
+                    url: "https://www.facebook.com/facebook/reel/your-reel-id-3/",
+                    thumbnail: "https://images.unsplash.com/photo-1600585154340-963ed7476c5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    title: "Custom Wardrobe Design"
+                }
             ]
         };
 
@@ -1122,7 +1371,6 @@
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
         
-        // Check for saved theme preference or default to dark
         const savedTheme = localStorage.getItem('woodteqphTheme') || 'dark';
         if (savedTheme === 'light') {
             body.classList.add('light-mode');
@@ -1132,23 +1380,59 @@
             body.classList.toggle('light-mode');
             const currentTheme = body.classList.contains('light-mode') ? 'light' : 'dark';
             localStorage.setItem('woodteqphTheme', currentTheme);
-            
-            // Show toast notification
             showToast(currentTheme === 'light' ? 'Light mode activated' : 'Dark mode activated');
         });
+
+        // Initialize Swiper sliders
+        let companyVideoSlider, catalogSwiper;
+        
+        function initializeSwipers() {
+            // Company Video Slider
+            companyVideoSlider = new Swiper('.companyVideoSlider', {
+                slidesPerView: 1,
+                spaceBetween: 0,
+                loop: true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                }
+            });
+            
+            // Catalog Slider
+            catalogSwiper = new Swiper('.catalogSwiper', {
+                slidesPerView: 'auto',
+                spaceBetween: 15,
+                loop: false,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    320: {
+                        slidesPerView: 1.2,
+                    },
+                    480: {
+                        slidesPerView: 1.5,
+                    },
+                    768: {
+                        slidesPerView: 2.2,
+                    }
+                }
+            });
+        }
 
         // Load profile data
         function loadProfileData() {
             const storedData = localStorage.getItem('woodteqphProfile');
-            const config = storedData ? JSON.parse(storedData) : defaultConfig;
+            const config = storedData ? JSON.parse(storedData) : {};
 
-            // Update profile info with fallback
+            // Update profile image
             const profileImage = document.getElementById('profileImage');
-            profileImage.src = config.profileImage || "img/dp.jpeg";
-            
-            // Add error handling for local image
             profileImage.onerror = function() {
-                console.log("Local image not found, using fallback");
                 this.src = "https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80";
             };
             
@@ -1180,216 +1464,75 @@
                     config.companyWebsite : `https://${config.companyWebsite}`;
                 link.target = '_blank';
             }
-
-            // Setup video - now for local file
-            if (config.videoUrl) {
-                setupVideo(config.videoUrl, config.videoType || "local", config.videoPoster);
-            }
-
-            // Load projects
-            if (config.slideshowImages && config.slideshowImages.length > 0) {
-                loadProjects(config.slideshowImages);
-            } else if (config.projects) {
-                loadProjects(config.projects);
-            } else {
-                loadProjects(defaultConfig.projects);
-            }
         }
 
-        // Setup local video player
-        function setupVideo(url, type, poster) {
-            const placeholder = document.getElementById('videoPlaceholder');
-            const player = document.getElementById('videoPlayer');
-            const playBtn = document.getElementById('playVideoBtn');
-            const controls = document.getElementById('videoControls');
-            const playPauseBtn = document.getElementById('playPauseBtn');
-            const muteBtn = document.getElementById('muteBtn');
-            const fullscreenBtn = document.getElementById('fullscreenBtn');
+        // Load Facebook video content
+        function loadFacebookVideos() {
+            // Load company videos
+            const companyVideoContainer = document.querySelector('.companyVideoSlider .swiper-wrapper');
+            companyVideoContainer.innerHTML = '';
             
-            // Set video source
-            if (type === "local") {
-                // Clear existing sources
-                player.innerHTML = '';
-                
-                // Add source based on file extension
-                if (url.endsWith('.mp4')) {
-                    const source = document.createElement('source');
-                    source.src = url;
-                    source.type = 'video/mp4';
-                    player.appendChild(source);
-                } else if (url.endsWith('.webm')) {
-                    const source = document.createElement('source');
-                    source.src = url;
-                    source.type = 'video/webm';
-                    player.appendChild(source);
-                } else {
-                    // Default to mp4
-                    const source = document.createElement('source');
-                    source.src = url;
-                    source.type = 'video/mp4';
-                    player.appendChild(source);
-                }
-                
-                // Add fallback message
-                const fallback = document.createElement('p');
-                fallback.textContent = 'Your browser does not support the video tag.';
-                player.appendChild(fallback);
-                
-                // Set poster image if available
-                if (poster) {
-                    player.poster = poster;
-                    // Add poster to placeholder as background
-                    placeholder.style.backgroundImage = `url('${poster}')`;
-                    placeholder.style.backgroundSize = 'cover';
-                    placeholder.style.backgroundPosition = 'center';
-                }
-                
-                // Play button click handler
-                playBtn.addEventListener('click', () => {
-                    placeholder.style.display = 'none';
-                    player.style.display = 'block';
-                    player.controls = true;
-                    player.play().catch(e => {
-                        console.log("Auto-play prevented:", e);
-                        // Show controls so user can manually play
-                        controls.classList.add('show');
-                    });
-                });
-                
-                // Video play/pause control
-                player.addEventListener('play', () => {
-                    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                    controls.classList.add('show');
-                });
-                
-                player.addEventListener('pause', () => {
-                    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-                });
-                
-                // Play/Pause button
-                playPauseBtn.addEventListener('click', () => {
-                    if (player.paused) {
-                        player.play();
-                    } else {
-                        player.pause();
-                    }
-                });
-                
-                // Mute button
-                muteBtn.addEventListener('click', () => {
-                    player.muted = !player.muted;
-                    muteBtn.innerHTML = player.muted ? 
-                        '<i class="fas fa-volume-mute"></i>' : 
-                        '<i class="fas fa-volume-up"></i>';
-                });
-                
-                // Fullscreen button
-                fullscreenBtn.addEventListener('click', () => {
-                    if (!document.fullscreenElement) {
-                        player.requestFullscreen().catch(err => {
-                            console.log(`Error attempting to enable fullscreen: ${err.message}`);
-                        });
-                    } else {
-                        document.exitFullscreen();
-                    }
-                });
-                
-                // Show/hide controls on mouse move
-                let hideControlsTimeout;
-                player.addEventListener('mousemove', () => {
-                    controls.classList.add('show');
-                    clearTimeout(hideControlsTimeout);
-                    hideControlsTimeout = setTimeout(() => {
-                        if (!player.paused) {
-                            controls.classList.remove('show');
-                        }
-                    }, 3000);
-                });
-                
-                // Show controls when video is paused
-                player.addEventListener('pause', () => {
-                    controls.classList.add('show');
-                });
-            }
-        }
-
-        // Load projects gallery
-        function loadProjects(projectImages) {
-            const grid = document.getElementById('projectsGrid');
-            grid.innerHTML = '';
-
-            projectImages.forEach((image, index) => {
-                const projectItem = document.createElement('div');
-                projectItem.className = 'project-item';
-                projectItem.innerHTML = `
-                    <img src="${image}" alt="Project ${index + 1}" class="project-image" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
-                    <div class="project-overlay">
-                        Project ${index + 1}
+            fbVideos.companyVideos.forEach((video, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'swiper-slide';
+                slide.innerHTML = `
+                    <div class="fb-video-container" data-fb-video="${video.url}">
+                        <div class="fb-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <img src="${video.thumbnail}" class="fb-video-thumbnail" alt="${video.title}" onerror="this.src='https://images.unsplash.com/photo-1503386435952-d7918b99d4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                        <div class="video-overlay">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="video-title">${video.title}</div>
+                        </div>
                     </div>
                 `;
-                
-                // Add click to enlarge
-                projectItem.addEventListener('click', () => {
-                    openLightbox(image, index);
-                });
-                
-                grid.appendChild(projectItem);
+                companyVideoContainer.appendChild(slide);
             });
-
-            // Add "add project" button for admin
-            if (localStorage.getItem('woodteqphAdminLoggedIn') === 'true') {
-                const addButton = document.createElement('div');
-                addButton.className = 'project-item add-project';
-                addButton.innerHTML = `
-                    <i class="fas fa-plus"></i>
-                    <span>Add Project</span>
+            
+            // Load project reels
+            const reelsGrid = document.getElementById('reelsGrid');
+            reelsGrid.innerHTML = '';
+            
+            fbVideos.projectReels.forEach((reel, index) => {
+                const reelItem = document.createElement('div');
+                reelItem.className = 'reel-item';
+                reelItem.setAttribute('data-fb-reel', reel.url);
+                reelItem.innerHTML = `
+                    <div class="fb-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <img src="${reel.thumbnail}" class="reel-thumbnail" alt="${reel.title}" onerror="this.src='https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                    <div class="reel-play-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="reel-overlay">
+                        ${reel.title}
+                    </div>
+                    <div class="reel-badge">
+                        <i class="fab fa-facebook"></i> Reel
+                    </div>
                 `;
-                addButton.addEventListener('click', uploadProject);
-                grid.appendChild(addButton);
-            }
-        }
-
-        // Upload project (simulated)
-        function uploadProject() {
-            showToast('Admin: Upload project feature would connect to edit.html');
-            setTimeout(() => {
-                window.location.href = 'edit.html';
-            }, 1500);
-        }
-
-        // Lightbox for projects
-        function openLightbox(imageUrl, index) {
-            const lightbox = document.createElement('div');
-            lightbox.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0,0,0,0.9);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 2000;
-                cursor: pointer;
-            `;
-            
-            const img = document.createElement('img');
-            img.src = imageUrl;
-            img.style.cssText = `
-                max-width: 90%;
-                max-height: 90%;
-                object-fit: contain;
-                border-radius: 10px;
-                box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            `;
-            
-            lightbox.appendChild(img);
-            document.body.appendChild(lightbox);
-            
-            lightbox.addEventListener('click', () => {
-                document.body.removeChild(lightbox);
+                reelsGrid.appendChild(reelItem);
             });
+            
+            // Add click events for Facebook videos and reels
+            document.querySelectorAll('.fb-video-container, .reel-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const videoUrl = this.getAttribute('data-fb-video') || this.getAttribute('data-fb-reel');
+                    if (videoUrl) {
+                        window.open(videoUrl, '_blank');
+                        showToast('Opening Facebook video...');
+                    }
+                });
+            });
+            
+            // Reinitialize Swiper after loading content
+            if (companyVideoSlider) {
+                companyVideoSlider.update();
+            }
         }
 
         // Generate vCard for contact saving
@@ -1463,14 +1606,16 @@ END:VCARD`;
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
+            initializeSwipers();
             loadProfileData();
+            loadFacebookVideos();
             
             // Event listeners
             document.getElementById('saveContactBtn').addEventListener('click', saveContact);
             document.getElementById('shareCardBtn').addEventListener('click', shareCard);
             
             // Add tap feedback
-            document.querySelectorAll('.tap-card').forEach(btn => {
+            document.querySelectorAll('.tap-card, .fb-video-container, .reel-item').forEach(btn => {
                 btn.addEventListener('touchstart', () => {
                     btn.style.transform = 'scale(0.95)';
                 });
@@ -1479,6 +1624,25 @@ END:VCARD`;
                 });
             });
         });
+
+        // Function to update Facebook video links (for admin panel)
+        function updateFacebookLinks(newCompanyVideos, newProjectReels) {
+            if (newCompanyVideos) {
+                fbVideos.companyVideos = newCompanyVideos;
+            }
+            if (newProjectReels) {
+                fbVideos.projectReels = newProjectReels;
+            }
+            
+            loadFacebookVideos();
+            showToast('Facebook video links updated!');
+        }
     </script>
+    <script>
+function openReel(url) {
+    window.open(url, '_blank');
+}
+</script>
+s
 </body>
 </html>
