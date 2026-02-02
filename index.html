@@ -10,8 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <!-- Swiper CSS for sliders -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
     <style>
         :root {
             /* Dark mode colors (default) */
@@ -119,10 +117,10 @@
             display: none;
         }
         
-        /* Modern Header */
+        /* Modern Header - BINAGO: Walang yellow box */
         .modern-header {
             background: var(--header-bg);
-            padding: 20px 0;
+            padding: 15px 0;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
@@ -133,27 +131,33 @@
         
         .header-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
         }
         
         .logo-brand {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             text-decoration: none;
         }
         
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--accent-gold);
-            border-radius: 10px;
+        /* LOGO CONTAINER - Walang yellow box */
+        .logo-container {
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary-black);
-            font-size: 20px;
+            background: transparent !important;
+            border-radius: 0 !important;
+        }
+        
+        .logo-container img {
+            width: 100%;
+            height: auto;
+            max-height: 60px;
+            object-fit: contain;
         }
         
         .logo-text {
@@ -162,14 +166,14 @@
         }
         
         .logo-main {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
             color: var(--text-light);
             line-height: 1.2;
         }
         
         .logo-sub {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--accent-gold);
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -183,7 +187,7 @@
             transition: all 0.3s ease;
         }
         
-        /* Profile Card - ENLARGED */
+        /* Profile Card */
         .profile-card {
             background: var(--card-bg);
             border-radius: 20px;
@@ -341,131 +345,8 @@
             transform: translateY(0);
         }
         
-        /* Video Slider Section - Facebook Video Links */
-        .video-slider-section {
-            padding: 0 20px;
-            margin-bottom: 30px;
-        }
-        
-        .video-slider-container {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            background: var(--dark-black);
-        }
-        
-        .swiper {
-            width: 100%;
-            height: 280px;
-            border-radius: 15px;
-        }
-        
-        .swiper-slide {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 15px;
-            overflow: hidden;
-        }
-        
-        /* Facebook Video Container */
-        .fb-video-container {
-            position: relative;
-            display: block;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-            border-radius: 15px;
-            overflow: hidden;
-        }
-        
-        .fb-video-thumbnail {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 15px;
-        }
-        
-        /* Facebook Icon positioning */
-        .fb-icon {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(135deg, #1877F2, #0D5FDB);
-            color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            z-index: 3;
-            box-shadow: 0 4px 12px rgba(24, 119, 242, 0.4);
-            transition: all 0.3s ease;
-        }
-        
-        .fb-icon:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 16px rgba(24, 119, 242, 0.6);
-        }
-        
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.2) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            padding: 20px;
-            text-align: center;
-            z-index: 1;
-        }
-        
-        .video-overlay:hover {
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
-        }
-        
-        .play-button {
-            width: 70px;
-            height: 70px;
-            background: rgba(24, 119, 242, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(24, 119, 242, 0.4);
-        }
-        
-        .video-overlay:hover .play-button {
-            transform: scale(1.1);
-            background: rgba(24, 119, 242, 1);
-            box-shadow: 0 15px 40px rgba(24, 119, 242, 0.6);
-        }
-        
-        .video-title {
-            font-size: 20px;
-            font-weight: 600;
-            text-align: center;
-            padding: 0 20px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
-            line-height: 1.3;
-        }
-        
-        /* Projects Reels Section - Facebook Video Links */
-        .projects-reels-section {
+        /* TikTok Video Links */
+        .tiktok-video-section {
             padding: 0 20px;
             margin-bottom: 30px;
         }
@@ -477,7 +358,6 @@
             margin-top: 15px;
         }
         
-        /* Reel Item with proper aspect ratio for reels */
         .reel-item {
             position: relative;
             border-radius: 15px;
@@ -486,23 +366,16 @@
             background: var(--dark-black);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.4s ease;
-            height: 280px; /* Taller for reels format */
+            height: 280px;
             aspect-ratio: 9/16;
             display: block;
-        }
-        
-        /* Add a subtle animation for reel hover */
-        @keyframes reelPulse {
-            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+            text-decoration: none;
         }
         
         .reel-item:hover {
             transform: translateY(-8px);
             border-color: var(--accent-gold);
             box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25);
-            animation: reelPulse 2s infinite;
         }
         
         .reel-thumbnail {
@@ -516,12 +389,28 @@
             transform: scale(1.05);
         }
         
-        /* Reel Badge */
+        .tt-icon {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #000000, #25F4EE, #FE2C55);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            z-index: 3;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+        
         .reel-badge {
             position: absolute;
             top: 15px;
             left: 15px;
-            background: linear-gradient(135deg, #1877F2, #0D5FDB);
+            background: linear-gradient(135deg, #000000, #25F4EE, #FE2C55);
             color: white;
             padding: 6px 12px;
             border-radius: 20px;
@@ -534,13 +423,12 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         
-        /* Play icon for reels */
         .reel-play-icon {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: rgba(24, 119, 242, 0.9);
+            background: rgba(0, 0, 0, 0.7);
             color: white;
             width: 60px;
             height: 60px;
@@ -552,13 +440,13 @@
             opacity: 0.9;
             transition: all 0.3s ease;
             z-index: 2;
-            box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
         }
         
         .reel-item:hover .reel-play-icon {
             opacity: 1;
             transform: translate(-50%, -50%) scale(1.1);
-            background: rgba(24, 119, 242, 1);
+            background: rgba(0, 0, 0, 0.9);
         }
         
         .reel-overlay {
@@ -573,57 +461,68 @@
             z-index: 2;
         }
         
-        /* Projects Catalog Section */
-        .projects-catalog-section {
+        /* Projects Gallery - BINAGO: PORTRAIT na may natural ratio */
+        .gallery-section {
             padding: 0 20px;
             margin-bottom: 30px;
         }
         
-        .catalog-slider-container {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
             margin-top: 15px;
         }
         
-        .catalog-swiper {
-            width: 100%;
-            height: 180px;
-            border-radius: 15px;
-        }
-        
-        .catalog-slide {
+        .gallery-item {
             position: relative;
             border-radius: 15px;
             overflow: hidden;
             cursor: pointer;
+            background: var(--dark-black);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            height: auto;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
         }
         
-        .catalog-image {
+        /* NATURAL RATIO: Hindi na fixed height, natural ratio ng image */
+        .gallery-image-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 133.33%; /* 3:4 ratio para sa portrait (4/3 = 1.3333) */
+            overflow: hidden;
+        }
+        
+        .gallery-image {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 15px;
             transition: transform 0.5s ease;
         }
         
-        .catalog-slide:hover .catalog-image {
+        .gallery-item:hover .gallery-image {
             transform: scale(1.05);
         }
         
-        .catalog-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            padding: 15px;
+        .gallery-overlay {
+            background: var(--dark-black);
+            padding: 10px 12px;
             color: white;
+            font-size: 11px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .catalog-overlay h6 {
-            margin-bottom: 5px;
-            color: var(--accent-gold);
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
         }
         
         /* Company Info */
@@ -778,43 +677,11 @@
             border-top: 1px solid rgba(0, 0, 0, 0.1);
         }
         
-        /* Admin Button */
-        .admin-float {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 1000;
-        }
-        
-        .admin-btn {
-            background: var(--accent-gold);
-            color: var(--primary-black);
-            border: none;
-            border-radius: 50px;
-            padding: 12px 25px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-        
-        .admin-btn:hover {
-            background: var(--light-gold);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(212, 175, 55, 0.6);
-            text-decoration: none;
-        }
-        
         /* Toast Notification */
         .toast-container {
             position: fixed;
-            bottom: 90px;
-            right: 25px;
+            bottom: 20px;
+            right: 20px;
             z-index: 1001;
         }
         
@@ -841,23 +708,6 @@
             to { transform: translateX(0); opacity: 1; }
         }
         
-        /* Loading Animation */
-        .loader {
-            display: none;
-            width: 30px;
-            height: 30px;
-            border: 3px solid rgba(212, 175, 55, 0.3);
-            border-top: 3px solid var(--accent-gold);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
         /* Responsive */
         @media (max-width: 768px) {
             .tap-grid {
@@ -869,6 +719,15 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .gallery-image-container {
+                padding-bottom: 133.33%; /* 3:4 ratio pa rin sa mobile */
+            }
+            
             .profile-name {
                 font-size: 26px;
             }
@@ -876,11 +735,6 @@
             .profile-img {
                 width: 130px;
                 height: 130px;
-            }
-            
-            .admin-btn {
-                padding: 10px 20px;
-                font-size: 13px;
             }
             
             .theme-toggle {
@@ -902,33 +756,22 @@
                 font-size: 18px;
             }
             
-            .swiper {
-                height: 220px;
-            }
-            
             .reel-item {
                 height: 320px;
                 aspect-ratio: 9/16;
             }
             
-            .catalog-swiper {
-                height: 150px;
-            }
-            
-            .video-title {
-                font-size: 16px;
-            }
-            
-            .play-button {
-                width: 60px;
-                height: 60px;
-                font-size: 24px;
-            }
-            
-            .reel-play-icon {
+            .logo-container {
                 width: 50px;
                 height: 50px;
-                font-size: 20px;
+            }
+            
+            .logo-main {
+                font-size: 18px;
+            }
+            
+            .logo-sub {
+                font-size: 9px;
             }
         }
         
@@ -940,17 +783,36 @@
                 margin-right: auto;
             }
             
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                max-width: 300px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
             .reel-item {
                 height: 380px;
+            }
+            
+            .logo-brand {
+                gap: 10px;
+            }
+            
+            .logo-container {
+                width: 45px;
+                height: 45px;
             }
         }
         
         @media (max-width: 480px) {
             .reels-grid {
                 grid-template-columns: 1fr;
-                max-width: 300px;
-                margin-left: auto;
-                margin-right: auto;
+                max-width: 280px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                max-width: 280px;
             }
             
             .reel-item {
@@ -967,28 +829,27 @@
             <i class="fas fa-sun"></i>
         </button>
     </div>
-<!-- Modern Header -->
-<header class="modern-header">
-    <div class="container">
-        <div class="header-container">
-            <a href="#" class="logo-brand" style="display: flex; align-items: center; gap: 12px;">
-                <!-- Your logo image added here -->
-                <div class="logo-icon" style="width: 50px; height: 50px;">
-                    <img 
-                        src="img/Woodteq PH logo (3).png" 
-                        alt="Woodteqph Logo" 
-                        style="width: 100%; height: auto; display: block;"
-                    >
-                </div>
-                
-                <div class="logo-text">
-                    <div class="logo-main" style="font-weight: bold;">WOODTEQPH PRIME</div>
-                    <div class="logo-sub" style="color: #fffffe;">CONSTRUCTION</div>
-                </div>
-            </a>
+
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="container">
+            <div class="header-container">
+                <a href="#" class="logo-brand">
+                    <!-- LOGO LANG - WALANG YELLOW BOX -->
+                    <div class="logo-container">
+                        <img 
+                            src="img/Woodteq PH logo (3).png" 
+                            alt="Woodteqph Logo" 
+                        >
+                    </div>
+                    <div class="logo-text">
+                        <div class="logo-main">WOODTEQPH PRIME</div>
+                        <div class="logo-sub">CORPORATION</div>
+                    </div>
+                </a>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -998,16 +859,17 @@
                     <!-- Profile Card -->
                     <div class="profile-card">
                         <div class="profile-header">
-                            <div class="profile-badge" id="positionBadge">SALES EXECUTIVE</div>
+                            <div class="profile-badge">SALES EXECUTIVE</div>
                             <div class="profile-img-container">
-                                <img id="profileImage" src="img/dp.jpeg" class="profile-img" alt="Profile" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'">
+                                <img src="img/dp.jpeg" class="profile-img" alt="Cus Marqueses" 
+                                     onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\">
                                 <div class="profile-verify">
                                     <i class="fas fa-check"></i>
                                 </div>
                             </div>
-                            <h2 id="fullName" class="profile-name">Cus Marqueses</h2>
-                            <div id="positionTitle" class="profile-title">Sales Executive</div>
-                            <div id="companyName" class="profile-company">Woodteqph Prime Corporation</div>
+                            <h2 class="profile-name">Cus Marqueses</h2>
+                            <div class="profile-title">Sales Executive</div>
+                            <div class="profile-company">Woodteqph Prime Corporation</div>
                             
                             <div class="profile-intro">
                                 <p>Specializing in premium construction solutions, custom cabinetry, and luxury interior design. Dedicated to delivering excellence in every project.</p>
@@ -1052,136 +914,1232 @@
                                 <div class="tap-desc">Send to friends</div>
                             </div>
                         </div>
-                        
 
-                   <!-- Projects Reels Section - TikTok Video Links -->
-<div class="projects-reels-section">
-
-  <div class="section-header">
-    <i class="fab fa-tiktok section-icon"></i>
-    <h4 class="section-title">Project Reels on TikTok</h4>
-  </div>
-
-  <div class="reels-grid">
-
-    <!-- Reel 1 -->
-    <div class="reel-item">
-      <a href="https://www.tiktok.com/@woodteqphprime/video/7602092247701605639"
-         target="_blank" rel="noopener">
-
-        <div class="tt-icon">
-          <i class="fab fa-tiktok"></i>
-        </div>
-
-        <img src="img/yes.png"
-             class="reel-thumbnail"
-             alt="Warehouse Project">
-
-        <div class="reel-play-icon">
-          <i class="fas fa-play"></i>
-        </div>
-
-        <div class="reel-overlay">Warehouse</div>
-
-        <div class="reel-badge">
-          <i class="fab fa-tiktok"></i> TikTok
-        </div>
-
-      </a>
-    </div>
-
-    <!-- Reel 2 -->
-    <div class="reel-item">
-      <a href="https://www.tiktok.com/@woodteqphprime/video/7554563283148213522"
-         target="_blank" rel="noopener">
-
-        <div class="tt-icon"><i class="fab fa-tiktok"></i></div>
-
-        <img src="img/no.png"
-             class="reel-thumbnail"
-             alt="Office Fit-out Project">
-
-        <div class="reel-play-icon"><i class="fas fa-play"></i></div>
-
-        <div class="reel-overlay">Panglao Projects </div>
-
-        <div class="reel-badge"><i class="fab fa-tiktok"></i> TikTok</div>
-
-      </a>
-    </div>
-
-    <!-- Reel 3 -->
-    <div class="reel-item">
-      <a href="https://www.tiktok.com/@woodteqphprime/video/7602090908066057479"
-         target="_blank" rel="noopener">
-
-        <div class="tt-icon"><i class="fab fa-tiktok"></i></div>
-
-        <img src="img/he.png"
-             class="reel-thumbnail"
-             alt="Custom Wardrobe Design">
-
-        <div class="reel-play-icon"><i class="fas fa-play"></i></div>
-
-        <div class="reel-overlay">Studio N Projects </div>
-
-        <div class="reel-badge"><i class="fab fa-tiktok"></i> TikTok</div>
-
-      </a>
-    </div>
-
-  </div>
-</div>
-
-                <!-- Projects Catalog Section - Picture slider -->
-                        <div class="projects-catalog-section">
+                        <!-- TikTok Video Links -->
+                        <div class="tiktok-video-section">
                             <div class="section-header">
-                                <i class="fas fa-images section-icon"></i>
-                                <h4 class="section-title">Project Gallery</h4>
+                                <i class="fab fa-tiktok section-icon"></i>
+                                <h4 class="section-title">Project Reels on TikTok</h4>
                             </div>
-                            <div class="catalog-slider-container">
-                                <div class="swiper catalogSwiper">
-                                    <div class="swiper-wrapper">
-                                        <!-- Project 1 -->
-                                        <div class="swiper-slide catalog-slide">
-                                            <img src="img/1.png" class="catalog-image" alt="Residential Project" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
-                                            <div class="catalog-overlay">
-                                                <h6>Luxury Villa Interior</h6>
-                                                <p class="small mb-0">Modern design with custom cabinetry</p>
-                                            </div>
-                                        </div>
-                                        
-                                        <!-- Project 2 -->
-                                        <div class="swiper-slide catalog-slide">
-                                            <img src="img/2.png" class="catalog-image" alt="Office Project" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1600585154340-963ed7476c5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
-                                            <div class="catalog-overlay">
-                                                <h6>Corporate Office</h6>
-                                                <p class="small mb-0">Executive office fit-out</p>
-                                            </div>
-                                        </div>
-                                        
-                                        <!-- Project 3 -->
-                                        <div class="swiper-slide catalog-slide">
-                                            <img src="img/3.png" class="catalog-image" alt="Kitchen Project" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
-                                            <div class="catalog-overlay">
-                                                <h6>Modern Kitchen</h6>
-                                                <p class="small mb-0">Custom cabinet installation</p>
-                                            </div>
-                                        </div>
-                                        
-                                        <!-- Project 4 -->
-                                        <div class="swiper-slide catalog-slide">
-                                            <img src="img/4.png" class="catalog-image" alt="Showroom Project" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1616587894289-86480e533129?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
-                                            <div class="catalog-overlay">
-                                                <h6>Retail Showroom</h6>
-                                                <p class="small mb-0">Display area design</p>
-                                            </div>
-                                        </div>
+
+                            <div class="reels-grid">
+                                <!-- Reel 1 -->
+                                <a href="https://www.tiktok.com/@woodteqphprime/video/7602092247701605639" 
+                                   target="_blank" class="reel-item">
+                                    <div class="tt-icon">
+                                        <i class="fab fa-tiktok"></i>
                                     </div>
-                                    <div class="swiper-pagination"></div>
-                                </div>
+                                    <img src="img/yes.png" class="reel-thumbnail" alt="Warehouse Project"
+                                         onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"%23121212\"/><text x=\"50\" y=\"50\" font-family=\"Arial\" font-size=\"12\" text-anchor=\"middle\" fill=\"white\">Warehouse Project</text></svg>'">
+                                    <div class="reel-play-icon">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="reel-overlay">Warehouse Project</div>
+                                    <div class="reel-badge">
+                                        <i class="fab fa-tiktok"></i> TikTok
+                                    </div>
+                                </a>
+
+                                <!-- Reel 2 -->
+                                <a href="https://www.tiktok.com/@woodteqphprime/video/7554563283148213522" 
+                                   target="_blank" class="reel-item">
+                                    <div class="tt-icon">
+                                        <i class="fab fa-tiktok"></i>
+                                    </div>
+                                    <img src="img/no.png" class="reel-thumbnail" alt="Panglao Projects"
+                                         onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"%23121212\"/><text x=\"50\" y=\"50\" font-family=\"Arial\" font-size=\"12\" text-anchor=\"middle\" fill=\"white\">Panglao Projects</text></svg>'">
+                                    <div class="reel-play-icon">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="reel-overlay">Panglao Projects</div>
+                                    <div class="reel-badge">
+                                        <i class="fab fa-tiktok"></i> TikTok
+                                    </div>
+                                </a>
+
+                                <!-- Reel 3 -->
+                                <a href="https://www.tiktok.com/@woodteqphprime/video/7602090908066057479" 
+                                   target="_blank" class="reel-item">
+                                    <div class="tt-icon">
+                                        <i class="fab fa-tiktok"></i>
+                                    </div>
+                                    <img src="img/he.png" class="reel-thumbnail" alt="Studio N Projects"
+                                         onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"%23121212\"/><text x=\"50\" y=\"50\" font-family=\"Arial\" font-size=\"12\" text-anchor=\"middle\" fill=\"white\">Studio N Projects</text></svg>'">
+                                    <div class="reel-play-icon">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="reel-overlay">Studio N Projects</div>
+                                    <div class="reel-badge">
+                                        <i class="fab fa-tiktok"></i> TikTok
+                                    </div>
+                                </a>
                             </div>
                         </div>
+
+                    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Project Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+        
+        body {
+            background: #ffffff;
+            color: #333333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* Gallery Header - GOLD AND WHITE */
+        .gallery-section {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #D4AF37;
+        }
+        
+        .section-icon {
+            font-size: 28px;
+            color: #D4AF37; /* GOLD COLOR */
+            margin-right: 15px;
+        }
+        
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #333333;
+            letter-spacing: 1px;
+        }
+        
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            height: 250px;
+            background: #f8f8f8;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border-color: #D4AF37;
+        }
+        
+        .gallery-image-container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 20px;
+            font-weight: 600;
+            font-size: 18px;
+            text-align: center;
+            backdrop-filter: blur(2px);
+        }
+        
+        /* Slideshow Modal - GOLD AND WHITE */
+        .slideshow-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .slideshow-content {
+            width: 90%;
+            max-width: 1000px;
+            height: 80vh;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .slideshow-image-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f9f9f9;
+        }
+        
+        .slideshow-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            animation: zoomIn 0.5s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .slideshow-controls {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 1002;
+        }
+        
+        .control-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #D4AF37;
+            color: #D4AF37;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .control-btn:hover {
+            background: #D4AF37;
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #D4AF37;
+            color: #D4AF37;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            z-index: 1002;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .close-btn:hover {
+            background: #D4AF37;
+            color: white;
+            transform: rotate(90deg);
+        }
+        
+        .image-title {
+            position: absolute;
+            bottom: 120px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #333333;
+            padding: 15px 20px;
+            z-index: 1001;
+            background: rgba(255, 255, 255, 0.9);
+            margin: 0 50px;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Wheel Animation Toggle */
+        .wheel-toggle {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .toggle-btn {
+            background: #D4AF37;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .toggle-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4);
+            background: #c19b2e;
+        }
+        
+        .toggle-btn.active {
+            background: #333333;
+        }
+        
+        /* Wheel Animation */
+        .wheel-animation {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .wheel-container {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotateWheel 30s linear infinite;
+            animation-play-state: paused;
+        }
+        
+        @keyframes rotateWheel {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+        
+        .wheel-item {
+            position: absolute;
+            width: 200px;
+            height: 150px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform-origin: center center -200px;
+            border: 2px solid white;
+        }
+        
+        .wheel-item:nth-child(1) { transform: rotateY(0deg) translateZ(200px); }
+        .wheel-item:nth-child(2) { transform: rotateY(45deg) translateZ(200px); }
+        .wheel-item:nth-child(3) { transform: rotateY(90deg) translateZ(200px); }
+        .wheel-item:nth-child(4) { transform: rotateY(135deg) translateZ(200px); }
+        .wheel-item:nth-child(5) { transform: rotateY(180deg) translateZ(200px); }
+        .wheel-item:nth-child(6) { transform: rotateY(225deg) translateZ(200px); }
+        .wheel-item:nth-child(7) { transform: rotateY(270deg) translateZ(200px); }
+        .wheel-item:nth-child(8) { transform: rotateY(315deg) translateZ(200px); }
+        
+        .wheel-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .wheel-center {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: #D4AF37;
+            border-radius: 50%;
+            z-index: 10;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+        
+        /* Image Counter */
+        .image-counter {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333333;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            z-index: 1001;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+            
+            .gallery-item {
+                height: 200px;
+            }
+            
+            .slideshow-content {
+                width: 95%;
+                height: 70vh;
+            }
+            
+            .control-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            .wheel-container {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .wheel-item {
+                width: 160px;
+                height: 120px;
+                transform-origin: center center -160px;
+            }
+            
+            .image-title {
+                font-size: 22px;
+                bottom: 140px;
+                margin: 0 20px;
+                padding: 12px 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .slideshow-content {
+                height: 60vh;
+            }
+            
+            .image-title {
+                font-size: 18px;
+                bottom: 160px;
+            }
+            
+            .wheel-container {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .wheel-item {
+                width: 120px;
+                height: 90px;
+                transform-origin: center center -120px;
+            }
+        }
+    </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Project Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+        
+        body {
+            background: #ffffff;
+            color: #333333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* Gallery Header - GOLD AND WHITE */
+        .gallery-section {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #D4AF37;
+        }
+        
+        .section-icon {
+            font-size: 28px;
+            color: #D4AF37; /* GOLD COLOR */
+            margin-right: 15px;
+        }
+        
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #333333;
+            letter-spacing: 1px;
+        }
+        
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            height: 250px;
+            background: #f8f8f8;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border-color: #D4AF37;
+        }
+        
+        .gallery-image-container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 20px;
+            font-weight: 600;
+            font-size: 18px;
+            text-align: center;
+            backdrop-filter: blur(2px);
+        }
+        
+        /* Slideshow Modal - GOLD AND WHITE */
+        .slideshow-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .slideshow-content {
+            width: 90%;
+            max-width: 1000px;
+            height: 80vh;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .slideshow-image-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f9f9f9;
+        }
+        
+        .slideshow-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            animation: zoomIn 0.5s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .slideshow-controls {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 1002;
+        }
+        
+        .control-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #D4AF37;
+            color: #D4AF37;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .control-btn:hover {
+            background: #D4AF37;
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #D4AF37;
+            color: #D4AF37;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            z-index: 1002;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .close-btn:hover {
+            background: #D4AF37;
+            color: white;
+            transform: rotate(90deg);
+        }
+        
+        .image-title {
+            position: absolute;
+            bottom: 120px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #333333;
+            padding: 15px 20px;
+            z-index: 1001;
+            background: rgba(255, 255, 255, 0.9);
+            margin: 0 50px;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Wheel Animation Toggle */
+        .wheel-toggle {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .toggle-btn {
+            background: #D4AF37;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .toggle-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4);
+            background: #c19b2e;
+        }
+        
+        .toggle-btn.active {
+            background: #333333;
+        }
+        
+        /* Wheel Animation */
+        .wheel-animation {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .wheel-container {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotateWheel 30s linear infinite;
+            animation-play-state: paused;
+        }
+        
+        @keyframes rotateWheel {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+        
+        .wheel-item {
+            position: absolute;
+            width: 200px;
+            height: 150px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform-origin: center center -200px;
+            border: 2px solid white;
+        }
+        
+        .wheel-item:nth-child(1) { transform: rotateY(0deg) translateZ(200px); }
+        .wheel-item:nth-child(2) { transform: rotateY(45deg) translateZ(200px); }
+        .wheel-item:nth-child(3) { transform: rotateY(90deg) translateZ(200px); }
+        .wheel-item:nth-child(4) { transform: rotateY(135deg) translateZ(200px); }
+        .wheel-item:nth-child(5) { transform: rotateY(180deg) translateZ(200px); }
+        .wheel-item:nth-child(6) { transform: rotateY(225deg) translateZ(200px); }
+        .wheel-item:nth-child(7) { transform: rotateY(270deg) translateZ(200px); }
+        .wheel-item:nth-child(8) { transform: rotateY(315deg) translateZ(200px); }
+        
+        .wheel-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .wheel-center {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: #D4AF37;
+            border-radius: 50%;
+            z-index: 10;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+        
+        /* Image Counter */
+        .image-counter {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333333;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            z-index: 1001;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+            
+            .gallery-item {
+                height: 200px;
+            }
+            
+            .slideshow-content {
+                width: 95%;
+                height: 70vh;
+            }
+            
+            .control-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            .wheel-container {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .wheel-item {
+                width: 160px;
+                height: 120px;
+                transform-origin: center center -160px;
+            }
+            
+            .image-title {
+                font-size: 22px;
+                bottom: 140px;
+                margin: 0 20px;
+                padding: 12px 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .slideshow-content {
+                height: 60vh;
+            }
+            
+            .image-title {
+                font-size: 18px;
+                bottom: 160px;
+            }
+            
+            .wheel-container {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .wheel-item {
+                width: 120px;
+                height: 90px;
+                transform-origin: center center -120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Projects Gallery -->
+        <div class="gallery-section">
+            <div class="section-header">
+                <i class="fas fa-images section-icon"></i>
+                <h4 class="section-title">Project Gallery</h4>
+            </div>
+            
+            <!-- Wheel Animation Toggle -->
+            <div class="wheel-toggle">
+                <button class="toggle-btn" id="toggleWheel">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Start 3D Wheel Animation</span>
+                </button>
+            </div>
+            
+            <!-- Wheel Animation -->
+            <div class="wheel-animation" id="wheelAnimation">
+                <div class="wheel-container" id="wheelContainer">
+                    <!-- Wheel items will be generated by JavaScript -->
+                </div>
+                <div class="wheel-center"></div>
+            </div>
+            
+            <!-- Gallery Grid -->
+            <div class="gallery-grid">
+                <!-- Project 1 -->
+                <div class="gallery-item" data-index="0">
+                    <div class="gallery-image-container">
+                        <img src="img/1.png" class="gallery-image" alt="Luxury Villa Interior">
+                    </div>
+                    <div class="gallery-overlay">
+                        Luxury Villa Interior
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="gallery-item" data-index="1">
+                    <div class="gallery-image-container">
+                        <img src="img/2.png" class="gallery-image" alt="Corporate Office">
+                    </div>
+                    <div class="gallery-overlay">
+                        Corporate Office
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="gallery-item" data-index="2">
+                    <div class="gallery-image-container">
+                        <img src="img/3.png" class="gallery-image" alt="Modern Kitchen">
+                    </div>
+                    <div class="gallery-overlay">
+                        Modern Kitchen
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="gallery-item" data-index="3">
+                    <div class="gallery-image-container">
+                        <img src="img/4.png" class="gallery-image" alt="Retail Showroom">
+                    </div>
+                    <div class="gallery-overlay">
+                        Retail Showroom
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slideshow Modal -->
+        <div class="slideshow-modal" id="slideshowModal">
+            <div class="slideshow-content">
+                <div class="image-counter" id="imageCounter">1 / 4</div>
+                <div class="slideshow-image-container">
+                    <img class="slideshow-image" id="slideshowImage" src="" alt="">
+                </div>
+                <div class="image-title" id="imageTitle">Luxury Villa Interior</div>
+                
+                <button class="close-btn" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+                
+                <div class="slideshow-controls">
+                    <button class="control-btn" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="control-btn" id="playPauseBtn">
+                        <i class="fas fa-pause"></i>
+                    </button>
+                    <button class="control-btn" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Gallery data - USING YOUR LOCAL IMAGES
+        const galleryItems = [
+            {
+                src: "img/1.png",
+                title: "Luxury Villa Interior",
+                alt: "Luxury Villa Interior"
+            },
+            {
+                src: "img/2.png",
+                title: "Corporate Office",
+                alt: "Corporate Office"
+            },
+            {
+                src: "img/3.png",
+                title: "Modern Kitchen",
+                alt: "Modern Kitchen"
+            },
+            {
+                src: "img/4.png",
+                title: "Retail Showroom",
+                alt: "Retail Showroom"
+            }
+        ];
+
+        // DOM Elements
+        const galleryGrid = document.querySelector('.gallery-grid');
+        const slideshowModal = document.getElementById('slideshowModal');
+        const slideshowImage = document.getElementById('slideshowImage');
+        const imageTitle = document.getElementById('imageTitle');
+        const imageCounter = document.getElementById('imageCounter');
+        const closeModalBtn = document.getElementById('closeModal');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const toggleWheelBtn = document.getElementById('toggleWheel');
+        const wheelAnimation = document.getElementById('wheelAnimation');
+        const wheelContainer = document.getElementById('wheelContainer');
+
+        // State variables
+        let currentIndex = 0;
+        let slideshowInterval;
+        let isPlaying = false;
+        let isWheelActive = false;
+
+        // Initialize the gallery
+        function initGallery() {
+            // Create wheel items
+            createWheelItems();
+            
+            // Add click event to gallery items
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    openSlideshow(index);
+                });
+            });
+            
+            // Add event listeners for modal controls
+            closeModalBtn.addEventListener('click', closeSlideshow);
+            prevBtn.addEventListener('click', showPrevImage);
+            nextBtn.addEventListener('click', showNextImage);
+            playPauseBtn.addEventListener('click', togglePlayPause);
+            
+            // Add keyboard navigation
+            document.addEventListener('keydown', handleKeydown);
+            
+            // Wheel toggle button
+            toggleWheelBtn.addEventListener('click', toggleWheelAnimation);
+            
+            // Prevent image errors - gold/white theme
+            document.querySelectorAll('.gallery-image').forEach(img => {
+                img.addEventListener('error', function() {
+                    this.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23f8f8f8"/><rect x="50" y="50" width="300" height="200" fill="%23ffffff" stroke="%23D4AF37" stroke-width="2"/><text x="200" y="120" font-family="Arial" font-size="16" text-anchor="middle" fill="%23333333">' + this.alt + '</text><text x="200" y="150" font-family="Arial" font-size="12" text-anchor="middle" fill="%23D4AF37">Image not found</text></svg>';
+                });
+            });
+        }
+
+        // Create wheel animation items
+        function createWheelItems() {
+            wheelContainer.innerHTML = '';
+            
+            // Create 8 items for the wheel (repeating gallery items)
+            for (let i = 0; i < 8; i++) {
+                const itemIndex = i % galleryItems.length;
+                const wheelItem = document.createElement('div');
+                wheelItem.className = 'wheel-item';
+                wheelItem.innerHTML = `
+                    <img src="${galleryItems[itemIndex].src}" class="wheel-image" alt="${galleryItems[itemIndex].alt}">
+                `;
+                wheelContainer.appendChild(wheelItem);
+                
+                // Add click event to wheel items
+                wheelItem.addEventListener('click', () => {
+                    openSlideshow(itemIndex);
+                });
+            }
+        }
+
+        // Toggle wheel animation
+        function toggleWheelAnimation() {
+            isWheelActive = !isWheelActive;
+            
+            if (isWheelActive) {
+                wheelAnimation.style.display = 'flex';
+                wheelContainer.style.animationPlayState = 'running';
+                toggleWheelBtn.innerHTML = '<i class="fas fa-stop"></i><span>Stop 3D Wheel Animation</span>';
+                toggleWheelBtn.classList.add('active');
+            } else {
+                wheelContainer.style.animationPlayState = 'paused';
+                toggleWheelBtn.innerHTML = '<i class="fas fa-sync-alt"></i><span>Start 3D Wheel Animation</span>';
+                toggleWheelBtn.classList.remove('active');
+                
+                // Hide after animation completes
+                setTimeout(() => {
+                    if (!isWheelActive) {
+                        wheelAnimation.style.display = 'none';
+                    }
+                }, 500);
+            }
+        }
+
+        // Open slideshow modal
+        function openSlideshow(index) {
+            currentIndex = index;
+            updateSlideshow();
+            slideshowModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            // Start autoplay
+            startAutoplay();
+        }
+
+        // Close slideshow modal
+        function closeSlideshow() {
+            slideshowModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            stopAutoplay();
+        }
+
+        // Update slideshow content
+        function updateSlideshow() {
+            const item = galleryItems[currentIndex];
+            slideshowImage.src = item.src;
+            imageTitle.textContent = item.title;
+            imageCounter.textContent = `${currentIndex + 1} / ${galleryItems.length}`;
+            
+            // Handle image errors in slideshow - gold/white theme
+            slideshowImage.onerror = function() {
+                this.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><rect width="800" height="600" fill="%23f8f8f8"/><rect x="100" y="100" width="600" height="400" fill="%23ffffff" stroke="%23D4AF37" stroke-width="3"/><text x="400" y="320" font-family="Arial" font-size="30" text-anchor="middle" fill="%23333333">' + item.title + '</text><text x="400" y="380" font-family="Arial" font-size="20" text-anchor="middle" fill="%23D4AF37">Image not found</text></svg>';
+            };
+        }
+
+        // Show previous image
+        function showPrevImage() {
+            currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+            updateSlideshow();
+        }
+
+        // Show next image
+        function showNextImage() {
+            currentIndex = (currentIndex + 1) % galleryItems.length;
+            updateSlideshow();
+        }
+
+        // Start autoplay
+        function startAutoplay() {
+            stopAutoplay();
+            isPlaying = true;
+            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            slideshowInterval = setInterval(showNextImage, 3000);
+        }
+
+        // Stop autoplay
+        function stopAutoplay() {
+            isPlaying = false;
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            if (slideshowInterval) {
+                clearInterval(slideshowInterval);
+            }
+        }
+
+        // Toggle play/pause
+        function togglePlayPause() {
+            if (isPlaying) {
+                stopAutoplay();
+            } else {
+                startAutoplay();
+            }
+        }
+
+        // Handle keyboard navigation
+        function handleKeydown(e) {
+            if (slideshowModal.style.display === 'flex') {
+                if (e.key === 'Escape') {
+                    closeSlideshow();
+                } else if (e.key === 'ArrowLeft') {
+                    showPrevImage();
+                } else if (e.key === 'ArrowRight') {
+                    showNextImage();
+                } else if (e.key === ' ') {
+                    e.preventDefault();
+                    togglePlayPause();
+                }
+            }
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', initGallery);
+    </script>
+</body>
+</html>
                         
                         <!-- Company Information -->
                         <div class="info-section">
@@ -1194,7 +2152,7 @@
                                 <i class="fas fa-building info-icon"></i>
                                 <div>
                                     <strong>About Us</strong>
-                                    <p id="aboutCompany" class="mb-0 small">Woodteqph Prime Corporation specializes in premium construction, custom cabinetry, and luxury interior fit-outs for residential and commercial clients across the Philippines.</p>
+                                    <p class="mb-0 small">WOODTEQPH PRIME CORPORATION emerged in response to the growing demand for special setup designs in Architectural Glass and aluminum windows. Originally established as WOODTEQ WOOD PRODUCTS MANUFACTURING in March 2022, the company has evolved to include a broader scope, incorporating specializations in modular cabinetry and countertop installation..</p>
                                 </div>
                             </div>
                             
@@ -1202,7 +2160,7 @@
                                 <i class="fas fa-map-marker-alt info-icon"></i>
                                 <div>
                                     <strong>Location</strong>
-                                    <p id="companyAddress" class="mb-0 small">343 West Service Road, Poblete Compound, Sun Valley, Parañaque City</p>
+                                    <p class="mb-0 small">343 West Service Road, Poblete Compound, Sun Valley, Parañaque City</p>
                                 </div>
                             </div>
                             
@@ -1211,7 +2169,7 @@
                                 <div>
                                     <strong>Website</strong>
                                     <p class="mb-0 small">
-                                        <a href="#" id="companyWebsite" class="text-decoration-none" style="color: var(--accent-gold); font-weight: 500;">
+                                        <a href="https://woodteqphprime.com" target="_blank" class="text-decoration-none" style="color: var(--accent-gold); font-weight: 500;">
                                             Visit Official Site
                                         </a>
                                     </p>
@@ -1243,16 +2201,16 @@
                         Delivering premium construction and interior solutions since 2008. Specializing in custom cabinetry, luxury residential interiors, and commercial fit-outs.
                     </div>
                     <div class="social-grid">
-                        <a href="#" class="social-icon">
+                        <a href="https://facebook.com/woodteqphprime" target="_blank" class="social-icon">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
+                        <a href="https://tiktok.com/@woodteqphprime" target="_blank" class="social-icon">
+                            <i class="fab fa-tiktok"></i>
                         </a>
-                        <a href="#" class="social-icon">
+                        <a href="https://instagram.com/woodteqphprime" target="_blank" class="social-icon">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="social-icon">
+                        <a href="https://youtube.com/@woodteqphprime" target="_blank" class="social-icon">
                             <i class="fab fa-youtube"></i>
                         </a>
                     </div>
@@ -1262,25 +2220,25 @@
                     <h5>Quick Links</h5>
                     <ul>
                         <li>
-                            <a href="login.html">
-                                <i class="fas fa-sign-in-alt"></i>
-                                Admin Login
+                            <a href="#" id="saveContactFooter">
+                                <i class="fas fa-save"></i>
+                                Save Contact
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="fas fa-file-pdf"></i>
-                                Download Brochure
+                            <a href="#" id="shareCardFooter">
+                                <i class="fas fa-share-alt"></i>
+                                Share Card
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="fas fa-calendar-alt"></i>
-                                Schedule Consultation
+                            <a href="tel:+639171234567">
+                                <i class="fas fa-phone-alt"></i>
+                                Call Now
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="https://maps.google.com/?q=343+West+Service+Road+Parañaque" target="_blank">
                                 <i class="fas fa-map-marked-alt"></i>
                                 Find Our Showroom
                             </a>
@@ -1300,19 +2258,11 @@
             </div>
             
             <div class="copyright">
-                <p class="mb-2">© 2023 Woodteqph Prime Corporation. All rights reserved.</p>
-                <p class="mb-0">Digital Business Card v3.0 | Tap & Save Technology</p>
+                <p class="mb-2">© 2022 Woodteqph Prime Corporation. All rights reserved.</p>
+                <p class="mb-0">Developed By: | Haciel Casihan Woodteqph IT</p>
             </div>
         </div>
     </footer>
-
-    <!-- Admin Floating Button -->
-    <div class="admin-float">
-        <a href="login.html" class="admin-btn">
-            <i class="fas fa-sign-in-alt"></i>
-            Admin Login
-        </a>
-    </div>
 
     <!-- Toast Notification -->
     <div class="toast-container">
@@ -1324,49 +2274,8 @@
         </div>
     </div>
 
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-
     <!-- JavaScript -->
     <script>
-        // Facebook Video Links Configuration
-        const fbVideos = {
-            companyVideos: [
-                {
-                    url: "https://www.facebook.com/facebook/videos/your-video-id-1/",
-                    thumbnail: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    title: "Company Introduction"
-                },
-                {
-                    url: "https://www.facebook.com/facebook/videos/your-video-id-2/",
-                    thumbnail: "https://images.unsplash.com/photo-1503386435952-d7918b99d4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    title: "Our Team at Work"
-                },
-                {
-                    url: "https://www.facebook.com/facebook/videos/your-video-id-3/",
-                    thumbnail: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    title: "Client Testimonials"
-                }
-            ],
-            projectReels: [
-                {
-                    url: "https://www.facebook.com/facebook/reel/your-reel-id-1/",
-                    thumbnail: "https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    title: "Modern Kitchen Cabinet Installation"
-                },
-                {
-                    url: "https://www.facebook.com/facebook/reel/your-reel-id-2/",
-                    thumbnail: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    title: "Office Fit-out Timelapse"
-                },
-                {
-                    url: "https://www.facebook.com/facebook/reel/your-reel-id-3/",
-                    thumbnail: "https://images.unsplash.com/photo-1600585154340-963ed7476c5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    title: "Custom Wardrobe Design"
-                }
-            ]
-        };
-
         // Theme toggle functionality
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
@@ -1383,211 +2292,73 @@
             showToast(currentTheme === 'light' ? 'Light mode activated' : 'Dark mode activated');
         });
 
-        // Initialize Swiper sliders
-        let companyVideoSlider, catalogSwiper;
-        
-        function initializeSwipers() {
-            // Company Video Slider
-            companyVideoSlider = new Swiper('.companyVideoSlider', {
-                slidesPerView: 1,
-                spaceBetween: 0,
-                loop: true,
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                }
-            });
-            
-            // Catalog Slider
-            catalogSwiper = new Swiper('.catalogSwiper', {
-                slidesPerView: 'auto',
-                spaceBetween: 15,
-                loop: false,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                breakpoints: {
-                    320: {
-                        slidesPerView: 1.2,
-                    },
-                    480: {
-                        slidesPerView: 1.5,
-                    },
-                    768: {
-                        slidesPerView: 2.2,
-                    }
-                }
-            });
-        }
-
-        // Load profile data
-        function loadProfileData() {
-            const storedData = localStorage.getItem('woodteqphProfile');
-            const config = storedData ? JSON.parse(storedData) : {};
-
-            // Update profile image
-            const profileImage = document.getElementById('profileImage');
-            profileImage.onerror = function() {
-                this.src = "https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80";
-            };
-            
-            if (config.fullName) {
-                document.getElementById('fullName').textContent = config.fullName;
-            }
-            if (config.position) {
-                document.getElementById('positionTitle').textContent = config.position;
-                document.getElementById('positionBadge').textContent = config.position.split(' ')[0].toUpperCase();
-            }
-            if (config.companyName) {
-                document.getElementById('companyName').textContent = config.companyName;
-            }
-            if (config.aboutCompany) {
-                document.getElementById('aboutCompany').textContent = config.aboutCompany;
-            }
-            if (config.companyAddress) {
-                document.getElementById('companyAddress').textContent = config.companyAddress;
-            }
-            if (config.contactNumber) {
-                document.querySelector('a[href^="tel:"]').href = `tel:${config.contactNumber}`;
-            }
-            if (config.emailAddress) {
-                document.querySelector('a[href^="mailto:"]').href = `mailto:${config.emailAddress}`;
-            }
-            if (config.companyWebsite) {
-                const link = document.getElementById('companyWebsite');
-                link.href = config.companyWebsite.startsWith('http') ? 
-                    config.companyWebsite : `https://${config.companyWebsite}`;
-                link.target = '_blank';
-            }
-        }
-
-        // Load Facebook video content
-        function loadFacebookVideos() {
-            // Load company videos
-            const companyVideoContainer = document.querySelector('.companyVideoSlider .swiper-wrapper');
-            companyVideoContainer.innerHTML = '';
-            
-            fbVideos.companyVideos.forEach((video, index) => {
-                const slide = document.createElement('div');
-                slide.className = 'swiper-slide';
-                slide.innerHTML = `
-                    <div class="fb-video-container" data-fb-video="${video.url}">
-                        <div class="fb-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </div>
-                        <img src="${video.thumbnail}" class="fb-video-thumbnail" alt="${video.title}" onerror="this.src='https://images.unsplash.com/photo-1503386435952-d7918b99d4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
-                        <div class="video-overlay">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                            <div class="video-title">${video.title}</div>
-                        </div>
-                    </div>
-                `;
-                companyVideoContainer.appendChild(slide);
-            });
-            
-            // Load project reels
-            const reelsGrid = document.getElementById('reelsGrid');
-            reelsGrid.innerHTML = '';
-            
-            fbVideos.projectReels.forEach((reel, index) => {
-                const reelItem = document.createElement('div');
-                reelItem.className = 'reel-item';
-                reelItem.setAttribute('data-fb-reel', reel.url);
-                reelItem.innerHTML = `
-                    <div class="fb-icon">
-                        <i class="fab fa-facebook-f"></i>
-                    </div>
-                    <img src="${reel.thumbnail}" class="reel-thumbnail" alt="${reel.title}" onerror="this.src='https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
-                    <div class="reel-play-icon">
-                        <i class="fas fa-play"></i>
-                    </div>
-                    <div class="reel-overlay">
-                        ${reel.title}
-                    </div>
-                    <div class="reel-badge">
-                        <i class="fab fa-facebook"></i> Reel
-                    </div>
-                `;
-                reelsGrid.appendChild(reelItem);
-            });
-            
-            // Add click events for Facebook videos and reels
-            document.querySelectorAll('.fb-video-container, .reel-item').forEach(item => {
-                item.addEventListener('click', function() {
-                    const videoUrl = this.getAttribute('data-fb-video') || this.getAttribute('data-fb-reel');
-                    if (videoUrl) {
-                        window.open(videoUrl, '_blank');
-                        showToast('Opening Facebook video...');
-                    }
-                });
-            });
-            
-            // Reinitialize Swiper after loading content
-            if (companyVideoSlider) {
-                companyVideoSlider.update();
-            }
-        }
-
         // Generate vCard for contact saving
         function generateVCard() {
-            const config = localStorage.getItem('woodteqphProfile') ? 
-                JSON.parse(localStorage.getItem('woodteqphProfile')) : {};
-            
-            const name = config.fullName || 'Cus Marqueses';
-            const company = config.companyName || 'Woodteqph Prime Corporation';
-            const title = config.position || 'Sales Executive';
-            const phone = config.contactNumber || '+639171234567';
-            const email = config.emailAddress || 'sales@woodteqphprime.com';
-            const address = config.companyAddress || '343 West Service Road, Poblete Compound, Sun Valley, Parañaque City';
-
             return `BEGIN:VCARD
 VERSION:3.0
-FN:${name}
-ORG:${company}
-TITLE:${title}
-TEL;TYPE=WORK,VOICE:${phone}
-EMAIL;TYPE=PREF,INTERNET:${email}
-ADR;TYPE=WORK:;;${address}
-PHOTO;VALUE=URI:${config.profileImage || "img/dp.jpeg"}
-NOTE:Digital Business Card - Tap & Save
+FN:Cus Marqueses
+ORG:Woodteqph Prime Corporation
+TITLE:Sales Executive
+TEL;TYPE=WORK,VOICE:+639171234567
+EMAIL;TYPE=PREF,INTERNET:sales@woodteqphprime.com
+ADR;TYPE=WORK:;;343 West Service Road, Poblete Compound, Sun Valley, Parañaque City
+URL:https://woodteqphprime.com
+NOTE:Digital Business Card - Woodteqph Prime Construction
 END:VCARD`;
         }
 
-        // Save contact function
+        // Save contact function - WORKING
         function saveContact() {
             const vCard = generateVCard();
-            const blob = new Blob([vCard], { type: 'text/vcard' });
+            
+            // Create a Blob with the vCard data
+            const blob = new Blob([vCard], { type: 'text/vcard;charset=utf-8' });
             const url = URL.createObjectURL(blob);
             
+            // Create a temporary link element
             const link = document.createElement('a');
             link.href = url;
             link.download = 'woodteqph-contact.vcf';
+            link.style.display = 'none';
+            
+            // Add to document, click, and remove
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
             
+            // Clean up the URL object
             URL.revokeObjectURL(url);
+            
             showToast('Contact saved! Check your downloads.');
         }
 
-        // Share card function
-        function shareCard() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Woodteqph Prime Business Card',
-                    text: 'Check out this digital business card',
-                    url: window.location.href
-                }).then(() => showToast('Card shared successfully!'));
-            } else {
-                navigator.clipboard.writeText(window.location.href)
-                    .then(() => showToast('Link copied to clipboard!'));
+        // Share card function - WORKING
+        async function shareCard() {
+            const shareData = {
+                title: 'Woodteqph Prime Business Card',
+                text: 'Check out this digital business card',
+                url: window.location.href
+            };
+            
+            try {
+                if (navigator.share && navigator.canShare(shareData)) {
+                    await navigator.share(shareData);
+                    showToast('Card shared successfully!');
+                } else {
+                    // Fallback: Copy to clipboard
+                    await navigator.clipboard.writeText(window.location.href);
+                    showToast('Link copied to clipboard!');
+                }
+            } catch (err) {
+                console.log('Error sharing:', err);
+                // Final fallback
+                const textArea = document.createElement('textarea');
+                textArea.value = window.location.href;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showToast('Link copied to clipboard!');
             }
         }
 
@@ -1606,16 +2377,16 @@ END:VCARD`;
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
-            initializeSwipers();
-            loadProfileData();
-            loadFacebookVideos();
-            
-            // Event listeners
+            // Event listeners for save contact
             document.getElementById('saveContactBtn').addEventListener('click', saveContact);
-            document.getElementById('shareCardBtn').addEventListener('click', shareCard);
+            document.getElementById('saveContactFooter').addEventListener('click', saveContact);
             
-            // Add tap feedback
-            document.querySelectorAll('.tap-card, .fb-video-container, .reel-item').forEach(btn => {
+            // Event listeners for share card
+            document.getElementById('shareCardBtn').addEventListener('click', shareCard);
+            document.getElementById('shareCardFooter').addEventListener('click', shareCard);
+            
+            // Add touch feedback
+            document.querySelectorAll('.tap-card').forEach(btn => {
                 btn.addEventListener('touchstart', () => {
                     btn.style.transform = 'scale(0.95)';
                 });
@@ -1623,26 +2394,30 @@ END:VCARD`;
                     btn.style.transform = '';
                 });
             });
-        });
-
-        // Function to update Facebook video links (for admin panel)
-        function updateFacebookLinks(newCompanyVideos, newProjectReels) {
-            if (newCompanyVideos) {
-                fbVideos.companyVideos = newCompanyVideos;
-            }
-            if (newProjectReels) {
-                fbVideos.projectReels = newProjectReels;
-            }
             
-            loadFacebookVideos();
-            showToast('Facebook video links updated!');
-        }
+            // Add image error handling
+            document.querySelectorAll('img').forEach(img => {
+                img.onerror = function() {
+                    // Set a simple placeholder if image fails to load
+                    this.style.backgroundColor = '#121212';
+                    this.style.display = 'flex';
+                    this.style.alignItems = 'center';
+                    this.style.justifyContent = 'center';
+                    this.style.color = '#ffffff';
+                    this.style.fontSize = '12px';
+                    this.innerHTML = '<span>Image</span>';
+                };
+            });
+            
+            // Gallery items click to view larger (optional)
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const imgSrc = this.querySelector('img').src;
+                    const imgAlt = this.querySelector('img').alt;
+                    showToast(`Viewing: ${imgAlt}`);
+                });
+            });
+        });
     </script>
-    <script>
-function openReel(url) {
-    window.open(url, '_blank');
-}
-</script>
-s
 </body>
 </html>
